@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김혜수 — UX·UI Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=DM+Mono:wght@300;400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:   #0A0A0A;
+  --bg2:  #111;
+  --bg3:  #161616;
+  --bg4:  #1A1A1A;
+  --b:    #1E1E1E;
+  --b2:   #2A2A2A;
+  --b3:   #333;
+  --fw:   #F2F2EE;
+  --fs:   #888880;
+  --fh:   #444440;
+  --red:  #E8002D;
+  --red2: rgba(232,0,45,0.08);
+  --sans: 'Noto Sans KR',sans-serif;
+  --mono: 'DM Mono',monospace;
+  --disp: 'Bebas Neue',sans-serif;
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--fw);font-family:var(--sans);overflow-x:hidden;}
+
+/* 스크롤바 */
+::-webkit-scrollbar{width:2px;}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:1px;}
+
+/* ══ GNB ══ */
+.gnb{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:52px;padding:0 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(10,10,10,0.96);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--b);
+}
+.gnb-logo{font-family:var(--disp);font-size:16px;letter-spacing:0.12em;color:var(--fw);}
+.gnb-logo em{color:var(--red);font-style:normal;}
+.gnb-nav{display:flex;gap:0;}
+.gnb-btn{
+  font-size:9px;font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--fh);background:none;border:none;padding:8px 14px;
+  cursor:pointer;text-decoration:none;transition:color 0.2s;
+  position:relative;
+}
+.gnb-btn::after{
+  content:'';position:absolute;bottom:0;left:14px;right:14px;
+  height:1px;background:var(--red);
+  transform:scaleX(0);transition:transform 0.25s;
+}
+.gnb-btn:hover{color:var(--fw);}
+.gnb-btn:hover::after,.gnb-btn.on::after{transform:scaleX(1);}
+.gnb-btn.on{color:var(--red);}
+
+/* ══ 공통 유틸 ══ */
+.max{max-width:1120px;margin:0 auto;padding:0 60px;}
+.eyebrow{
+  font-size:9px;font-family:var(--mono);letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--red);
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;
+}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--red);}
+.disp{font-family:var(--disp);letter-spacing:0.04em;color:var(--fw);line-height:0.92;}
+.body{font-size:13px;color:var(--fs);line-height:1.95;font-weight:300;}
+.mono{font-family:var(--mono);}
+.hr{width:100%;height:1px;background:var(--b);}
+.hr-red{width:32px;height:1px;background:var(--red);}
+.rdot{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0;}
+
+/* 태그 */
+.t{
+  font-size:8px;letter-spacing:0.08em;font-family:var(--mono);
+  color:var(--fh);border:1px solid var(--b3);
+  padding:3px 10px;display:inline-block;white-space:nowrap;
+  transition:all 0.2s;
+}
+.t:hover,.t.hi{color:var(--red);border-color:var(--red);}
+
+/* KPI 박스 */
+.kpi{padding:14px 20px;text-align:center;border:1px solid var(--b2);transition:border-color 0.2s;}
+.kpi:hover{border-color:var(--b3);}
+.kpi-k{font-size:7px;color:var(--fh);font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px;}
+.kpi-v{font-size:15px;font-weight:700;color:var(--fw);font-family:var(--mono);}
+.kpi.hi .kpi-v{color:var(--red);}
+
+/* 이미지 16:9 */
+.img16{
+  width:100%;aspect-ratio:16/9;
+  background:var(--bg3);border:1px solid var(--b);
+  overflow:hidden;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.img16 img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;transition:transform 0.4s ease;}
+.img16:hover img{transform:scale(1.03);}
+.img16-cap{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,0.8));
+  padding:20px 12px 10px;
+  font-size:8px;color:rgba(255,255,255,0.6);font-family:var(--mono);
+  transform:translateY(100%);transition:transform 0.3s;
+  z-index:2;
+}
+.img16:hover .img16-cap{transform:translateY(0);}
+.img16-ph{font-size:8px;color:var(--b3);font-family:var(--mono);text-align:center;padding:8px;z-index:1;}
+
+/* 링크 버튼 */
+.lnk{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;font-family:var(--mono);letter-spacing:0.08em;
+  color:var(--fs);text-decoration:none;
+  border:1px solid var(--b3);padding:11px 22px;
+  transition:all 0.2s;
+}
+.lnk:hover{color:var(--fw);border-color:var(--b3);background:var(--bg3);}
+.lnk.primary{color:var(--red);border-color:var(--red);}
+.lnk.primary:hover{background:var(--red2);}
+
+/* 페이드인 */
+.fi{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fi.on{opacity:1;transform:none;}
+.fi.d1{transition-delay:0.1s;}
+.fi.d2{transition-delay:0.2s;}
+.fi.d3{transition-delay:0.3s;}
+
+/* ══════════════════
+   HERO
+══════════════════ */
+#hero{
+  min-height:100vh;
+  display:flex;align-items:flex-end;
+  padding-bottom:80px;
+  border-bottom:1px solid var(--b);
+  position:relative;overflow:hidden;
+}
+/* 배경 장식 텍스트 */
+#hero::before{
+  content:'GAME\AUXUI';
+  position:absolute;right:-40px;top:50%;transform:translateY(-50%);
+  font-family:var(--disp);font-size:260px;line-height:0.85;
+  color:transparent;-webkit-text-stroke:1px rgba(232,0,45,0.05);
+  pointer-events:none;letter-spacing:0.04em;white-space:pre;
+  text-align:right;
+}
+.hero-inner{
+  max-width:1120px;margin:0 auto;padding:0 60px;width:100%;
+  display:grid;grid-template-columns:1fr 220px;gap:60px;align-items:flex-end;
+}
+.hero-apply{
+  display:inline-flex;align-items:center;gap:0;
+  border:1px solid var(--b2);margin-bottom:48px;
+}
+.hero-apply-item{padding:9px 18px;font-size:9px;font-family:var(--mono);letter-spacing:0.1em;}
+.hero-apply-item:not(:last-child){border-right:1px solid var(--b2);}
+.hero-apply-label{color:var(--fh);text-transform:uppercase;}
+.hero-apply-co{color:var(--fs);}
+.hero-apply-role{color:var(--red);}
+
+.hero-name{font-family:var(--disp);font-size:128px;letter-spacing:0.02em;color:var(--fw);line-height:0.88;margin-bottom:8px;}
+.hero-en{font-size:10px;color:var(--fh);letter-spacing:0.3em;text-transform:uppercase;font-family:var(--mono);margin-bottom:44px;}
+.hero-tl{font-size:22px;font-weight:500;color:var(--fw);line-height:1.5;margin-bottom:10px;}
+.hero-sub{font-size:13px;color:var(--fs);line-height:1.95;font-weight:300;margin-bottom:44px;max-width:500px;}
+.hero-meta{display:flex;align-items:center;gap:20px;}
+.hero-plats{display:flex;align-items:center;}
+.hero-plat{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--fh);font-family:var(--mono);}
+.hero-sep{font-size:9px;color:var(--b3);margin:0 12px;}
+.vsep{width:1px;height:14px;background:var(--b2);}
+.hero-sidae{display:flex;align-items:center;gap:8px;text-decoration:none;transition:all 0.2s;}
+.hero-sidae span{font-size:9px;color:var(--fh);font-family:var(--mono);transition:color 0.2s;}
+.hero-sidae:hover span{color:var(--red);}
+
+/* 오른쪽 스탯 */
+.hero-stats{display:flex;flex-direction:column;}
+.hero-stat{
+  padding:24px 0;border-bottom:1px solid var(--b);
+  display:flex;flex-direction:column;align-items:flex-end;
+  cursor:default;transition:padding-right 0.2s;
+}
+.hero-stat:first-child{border-top:1px solid var(--b);}
+.hero-stat:hover{padding-right:8px;}
+.hero-stat-n{font-family:var(--disp);font-size:56px;color:var(--red);line-height:0.9;letter-spacing:0.02em;}
+.hero-stat-k{font-size:8px;color:var(--fh);font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;margin-top:6px;}
+
+/* ══════════════════
+   섹션 공통
+══════════════════ */
+.sec{padding:100px 60px;max-width:1120px;margin:0 auto;border-bottom:1px solid var(--b);}
+/* 짝수 섹션 배경 살짝 다르게 */
+.sec-alt{background:var(--bg2);}
+.sec-num{
+  font-family:var(--disp);font-size:120px;color:transparent;
+  -webkit-text-stroke:1px var(--b2);
+  line-height:1;margin-bottom:-20px;
+  pointer-events:none;
+}
+/* ══════════════════
+   HIGHLIGHTS
+══════════════════ */
+.hl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--b);margin-top:52px;}
+.hl-card{
+  background:var(--bg);padding:32px 26px;
+  display:flex;flex-direction:column;gap:16px;
+  text-decoration:none;transition:background 0.25s;
+  min-height:260px;
+}
+.hl-card:hover{background:var(--bg3);}
+.hl-card:hover .hl-arrow{color:var(--red);}
+.hl-badge{font-size:8px;color:var(--fh);font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;}
+.hl-title{font-family:var(--disp);font-size:26px;color:var(--fw);letter-spacing:0.02em;line-height:1.15;}
+.hl-stat{font-family:var(--disp);font-size:40px;color:var(--red);letter-spacing:0.02em;line-height:1;}
+.hl-stat-label{font-size:8px;color:var(--fh);font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;margin-top:5px;}
+.hl-desc{font-size:10px;color:var(--fs);line-height:1.75;font-weight:300;}
+.hl-arrow{font-size:10px;color:var(--fh);font-family:var(--mono);margin-top:auto;transition:color 0.2s;}
+
+
+/* ══════════════════
+   시대로그
+══════════════════ */
+.sl-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:52px;}
+.sl-stat{display:flex;justify-content:space-between;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--b);transition:all 0.2s;}
+.sl-stat:first-child{border-top:1px solid var(--b);}
+.sl-stat:hover{padding-left:8px;}
+.sl-stat-n{font-family:var(--disp);font-size:52px;color:var(--fw);letter-spacing:0.02em;}
+.sl-stat-k{font-size:9px;color:var(--fh);font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;}
+
+.sl-fws{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin-top:52px;background:var(--b);}
+.sl-fw{
+  padding:22px 18px;background:var(--bg);
+  transition:background 0.25s,padding-top 0.25s;
+  cursor:default;
+}
+.sl-fw:hover{background:var(--bg3);padding-top:28px;}
+.sl-fw-n{font-size:9px;color:var(--red);font-family:var(--mono);margin-bottom:14px;}
+.sl-fw-name{font-size:15px;font-weight:700;color:var(--fw);margin-bottom:4px;line-height:1.3;}
+.sl-fw-en{font-size:7px;color:var(--fh);letter-spacing:0.12em;text-transform:uppercase;font-family:var(--mono);margin-bottom:10px;}
+.sl-fw-desc{font-size:10px;color:var(--fs);line-height:1.65;}
+.sl-fw-game{font-size:8px;color:var(--red);margin-top:14px;font-family:var(--mono);opacity:0.7;}
+
+.sl-bridge{
+  display:grid;grid-template-columns:1fr 52px 1fr;
+  align-items:center;border:1px solid var(--b);padding:28px 36px;margin-top:32px;
+  transition:border-color 0.2s;
+}
+.sl-bridge:hover{border-color:var(--b3);}
+.sl-bridge-tag{font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);font-family:var(--mono);margin-bottom:9px;}
+.sl-bridge-text{font-size:13px;color:var(--fs);line-height:1.85;font-weight:300;}
+.sl-bridge-arr{text-align:center;font-size:22px;color:var(--b3);}
+
+/* ══════════════════
+   경력
+══════════════════ */
+.career-cards{display:flex;flex-direction:column;gap:1px;margin-top:52px;background:var(--b);}
+.cc{
+  background:var(--bg);display:flex;
+  transition:background 0.25s;cursor:default;
+}
+.cc:hover{background:var(--bg3);}
+.cc:hover .cc-idx{border-right-color:var(--red);}
+.cc-idx{
+  width:64px;flex-shrink:0;
+  border-right:1px solid var(--b);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  padding:28px 0;transition:border-color 0.25s;
+}
+.cc-idx-n{font-family:var(--disp);font-size:28px;color:var(--red);}
+.cc-idx-line{width:1px;height:28px;background:var(--b2);}
+.cc-idx-dur{font-size:7px;color:var(--fh);font-family:var(--mono);writing-mode:vertical-rl;letter-spacing:0.1em;}
+.cc-body{flex:1;padding:28px 36px;display:flex;gap:36px;align-items:flex-start;}
+.cc-text{flex:1;}
+.cc-period{font-size:9px;color:var(--fh);font-family:var(--mono);letter-spacing:0.1em;margin-bottom:9px;}
+.cc-name-row{display:flex;align-items:baseline;gap:14px;margin-bottom:5px;}
+.cc-name{font-size:19px;font-weight:700;color:var(--fw);letter-spacing:-0.01em;}
+.cc-co{font-size:11px;color:var(--fh);}
+.cc-role{font-size:10px;color:var(--fh);margin-bottom:12px;}
+.cc-desc{font-size:10px;color:var(--fs);line-height:1.85;margin-bottom:14px;}
+.cc-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.cc-kpis{display:flex;gap:1px;flex-shrink:0;background:var(--b);}
+.cc-kpi{background:var(--bg);padding:18px 22px;text-align:center;min-width:92px;transition:background 0.2s;}
+.cc-kpi:hover{background:var(--bg4);}
+.cc-kpi-k{font-size:7px;color:var(--fh);font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px;}
+.cc-kpi-v{font-size:14px;font-weight:700;color:var(--fw);font-family:var(--mono);}
+.cc-kpi.hi .cc-kpi-v{color:var(--red);}
+
+/* ══════════════════
+   프로젝트 공통
+══════════════════ */
+.ph{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px;}
+.ph-left{}
+.ph-badge{font-size:9px;color:var(--fh);font-family:var(--mono);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:9px;}
+.ph-title{font-family:var(--disp);font-size:52px;letter-spacing:0.03em;color:var(--fw);line-height:0.95;margin-bottom:8px;}
+.ph-sub{font-size:12px;color:var(--fs);font-weight:300;}
+.ph-kpis{display:flex;gap:1px;background:var(--b);flex-shrink:0;align-self:flex-start;}
+
+.p2{display:grid;grid-template-columns:1fr 1.8fr;gap:48px;}
+.p3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.plabel{font-size:8px;color:var(--red);font-family:var(--mono);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;}
+.pmini{font-size:14px;font-weight:700;color:var(--fw);margin-bottom:8px;}
+.pdesc{font-size:10px;color:var(--fs);line-height:1.85;}
+.pitem{border-left:2px solid var(--b2);padding:10px 14px;margin-bottom:8px;transition:border-color 0.2s;}
+.pitem:hover{border-left-color:var(--red);}
+.pitem-name{font-size:11px;font-weight:500;color:var(--fw);margin-bottom:3px;}
+.pitem-date{font-size:8px;color:var(--fh);font-family:var(--mono);}
+.pitem-desc{font-size:9px;color:var(--fs);}
+.ditem{border-left:2px solid var(--b2);padding:10px 14px;margin-bottom:8px;transition:border-color 0.2s;}
+.ditem:hover{border-left-color:var(--red);}
+.ditem-title{font-size:11px;font-weight:500;color:var(--fw);margin-bottom:3px;}
+.ditem-desc{font-size:9px;color:var(--fs);}
+.steps{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.step{border:1px solid var(--b2);padding:6px 12px;font-size:9px;color:var(--fs);font-family:var(--mono);transition:all 0.2s;}
+.step:hover{border-color:var(--red);color:var(--red);}
+.step-arr{font-size:11px;color:var(--red);}
+
+/* 와이드 이미지 (21:9) */
+.img21{
+  width:100%;aspect-ratio:21/9;background:var(--bg3);border:1px solid var(--b);
+  overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;
+}
+.img21 img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;transition:transform 0.4s;}
+.img21:hover img{transform:scale(1.02);}
+.img21-ph{font-size:8px;color:var(--b3);font-family:var(--mono);text-align:center;padding:8px;}
+
+/* ══════════════════
+   개인작 링크
+══════════════════ */
+.pers-links{display:flex;gap:10px;margin-top:24px;}
+
+/* ══════════════════
+   FOOTER
+══════════════════ */
+footer{
+  border-top:1px solid var(--b);
+  padding:52px 60px;
+  max-width:none;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.ft-name{font-family:var(--disp);font-size:22px;color:var(--fw);letter-spacing:0.06em;margin-bottom:6px;}
+.ft-role{font-size:10px;color:var(--fh);font-family:var(--mono);}
+.ft-sidae{display:flex;align-items:center;gap:8px;text-decoration:none;font-size:10px;color:var(--fh);font-family:var(--mono);transition:color 0.2s;}
+.ft-sidae:hover{color:var(--red);}
+</style>
+</head>
+<body>
+
+<!-- GNB -->
+<nav class="gnb">
+  <div class="gnb-logo">KIM HYESOO</div>
+  <div class="gnb-nav">
+    <a href="#hero"       class="gnb-btn on">Intro</a>
+    <a href="#career"     class="gnb-btn">Career</a>
+    <a href="#highlights" class="gnb-btn">Highlights</a>
+    <a href="#proj-a"     class="gnb-btn">오디션</a>
+    <a href="#proj-b"     class="gnb-btn">퍼즐오디션</a>
+    <a href="#eclipsera"  class="gnb-btn">Eclipsera</a>
+    <a href="#gogal"      class="gnb-btn">고깔모자</a>
+    <a href="#sidaelog"   class="gnb-btn">시대log</a>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="fi">
+      <div class="hero-apply">
+        <div class="hero-apply-item hero-apply-label">Applied to</div>
+        <div class="hero-apply-item hero-apply-co">NEOWIZ · Onetake Studio</div>
+        <div class="hero-apply-item hero-apply-role">신작 프로젝트 UI 디자이너</div>
+      </div>
+      <div class="hero-name">김혜수</div>
+      <div class="hero-en">Hyesoo Kim</div>
+      <div class="hero-tl">UI/UX로 게임을 읽는 디자이너</div>
+      <div class="hero-sub">플레이어의 감정과 게임의 의도가<br>만나는 UX를 설계합니다</div>
+      <div class="hero-meta">
+        <div class="hero-plats">
+          <span class="hero-plat">Mobile</span><span class="hero-sep">/</span>
+          <span class="hero-plat">PC Game</span><span class="hero-sep">/</span>
+          <span class="hero-plat">Unity</span>
+        </div>
+        <div class="vsep"></div>
+        <a href="https://sidaelog.vercel.app" target="_blank" class="hero-sidae">
+          <span class="rdot"></span>
+          <span>시대로그 · 게임 UX 분석 매거진 ↗</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats fi d1">
+      <div class="hero-stat"><span class="hero-stat-n">07</span><span class="hero-stat-k">Years of Exp.</span></div>
+      <div class="hero-stat"><span class="hero-stat-n">03</span><span class="hero-stat-k">Projects</span></div>
+      <div class="hero-stat"><span class="hero-stat-n">+30%</span><span class="hero-stat-k">UV Increase</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 경력 ════ -->
+<section id="career" style="background:var(--bg2);border-bottom:1px solid var(--b);">
+  <div class="sec" style="border:none;">
+    <div class="sec-num fi">01</div>
+    <div class="eyebrow fi">Career Overview</div>
+    <div class="disp fi" style="font-size:72px;">7년의 기록</div>
+    <div class="career-cards">
+      <div class="cc fi">
+        <div class="cc-idx"><div class="cc-idx-n">01</div><div class="cc-idx-line"></div><div class="cc-idx-dur">3년 1개월</div></div>
+        <div class="cc-body">
+          <div class="cc-text">
+            <div class="cc-period">2021.12 – 2025.01</div>
+            <div class="cc-name-row"><span class="cc-name">오디션 PC</span><span class="cc-co">티쓰리엔터테인먼트</span></div>
+            <div class="cc-role">2D UI 디자이너 (메인) · PC 게임팀</div>
+            <div class="cc-desc">국내·해외 2D UI 개발 일정 및 업무 관리. 신규 콘텐츠 개발, 기존 디자인 리뉴얼, 해외 현지화. 시작 플로우 리뉴얼로 유저 만족도 증가, 출석이벤트 리뉴얼 후 UV 30% 증가.</div>
+            <div class="cc-tags"><span class="t">PC Game</span><span class="t">Photoshop</span><span class="t">현지화</span></div>
+          </div>
+          <div class="cc-kpis">
+            <div class="cc-kpi hi"><div class="cc-kpi-k">UV</div><div class="cc-kpi-v">+30%</div></div>
+            <div class="cc-kpi"><div class="cc-kpi-k">매출</div><div class="cc-kpi-v">최단기</div></div>
+            <div class="cc-kpi"><div class="cc-kpi-k">리소스</div><div class="cc-kpi-v">최적화</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cc fi d1">
+        <div class="cc-idx"><div class="cc-idx-n">02</div><div class="cc-idx-line"></div><div class="cc-idx-dur">7개월</div></div>
+        <div class="cc-body">
+          <div class="cc-text">
+            <div class="cc-period">2021.04 – 2021.11</div>
+            <div class="cc-name-row"><span class="cc-name">이로하스 IP 게임</span><span class="cc-co">브릿지게임즈</span></div>
+            <div class="cc-role">UX UI 디자이너 · 모바일 게임</div>
+            <div class="cc-desc">오래된 이로하스 IP를 당시 트렌드에 맞춰 재해석. UX UI 시안, Spine 애니메이션 및 Unity Particle 이펙트 제작, 국가지원사업 선정 발표 담당.</div>
+            <div class="cc-tags"><span class="t">Mobile</span><span class="t">Spine</span><span class="t">IP 재해석</span><span class="t">국가지원사업</span></div>
+          </div>
+          <div class="cc-kpis">
+            <div class="cc-kpi"><div class="cc-kpi-k">기간</div><div class="cc-kpi-v">7개월</div></div>
+            <div class="cc-kpi"><div class="cc-kpi-k">성과</div><div class="cc-kpi-v">신규 개발</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cc fi d2">
+        <div class="cc-idx"><div class="cc-idx-n">03</div><div class="cc-idx-line"></div><div class="cc-idx-dur">2년 5개월</div></div>
+        <div class="cc-body">
+          <div class="cc-text">
+            <div class="cc-period">2018.11 – 2021.04</div>
+            <div class="cc-name-row"><span class="cc-name">퍼즐오디션</span><span class="cc-co">아이오넷</span></div>
+            <div class="cc-role">UX UI 디자이너 · 모바일 게임</div>
+            <div class="cc-desc">알파 단계부터 게임 컨셉·컬러·UX를 설계. 퍼즐블록 핵심 디자인으로 한빛소프트 투자 확정. 게임 런칭 후 인기게임 10위 유지, 태국 현지화 담당.</div>
+            <div class="cc-tags"><span class="t">Mobile</span><span class="t">게임 런칭</span><span class="t">Unity</span><span class="t">현지화</span><span class="t">컨셉 설계</span></div>
+          </div>
+          <div class="cc-kpis">
+            <div class="cc-kpi hi"><div class="cc-kpi-k">투자</div><div class="cc-kpi-v">한빛소프트</div></div>
+            <div class="cc-kpi hi"><div class="cc-kpi-k">순위</div><div class="cc-kpi-v">인기 Top10</div></div>
+            <div class="cc-kpi"><div class="cc-kpi-k">현지화</div><div class="cc-kpi-v">태국 런칭</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ HIGHLIGHTS ════ -->
+<section id="highlights" class="sec">
+  <div class="sec-num fi">02</div>
+  <div class="eyebrow fi">Highlights — 핵심 성과</div>
+  <div class="disp fi" style="font-size:60px;">숫자로 보는<br>4개의 프로젝트</div>
+  <div class="body fi" style="margin-top:20px;max-width:520px;">실무 프로젝트 2개 · 개인 프로젝트 2개 — 각 작업에서 만든 가장 중요한 결과만 모았어요. 카드를 클릭하면 해당 프로젝트로 이동해요.</div>
+
+  <div class="hl-grid fi">
+    <a href="#proj-a" class="hl-card">
+      <div class="hl-badge">Project A · 티쓰리엔터테인먼트</div>
+      <div class="hl-title">오디션 PC</div>
+      <div>
+        <div class="hl-stat">+30%</div>
+        <div class="hl-stat-label">UV Increase</div>
+      </div>
+      <div class="hl-desc">온보딩 플로우 리뉴얼 & 신규 펫 시스템 — 팀 최대 매출 최단기 달성</div>
+      <div class="hl-arrow">View Project →</div>
+    </a>
+    <a href="#proj-b" class="hl-card">
+      <div class="hl-badge">Project B · 아이오넷</div>
+      <div class="hl-title">퍼즐오디션</div>
+      <div>
+        <div class="hl-stat">Top 10</div>
+        <div class="hl-stat-label">Popular Ranking</div>
+      </div>
+      <div class="hl-desc">알파부터 런칭까지 컨셉 설계 전담 — 한빛소프트 투자 확정</div>
+      <div class="hl-arrow">View Project →</div>
+    </a>
+    <a href="#eclipsera" class="hl-card">
+      <div class="hl-badge">Personal A · 완성</div>
+      <div class="hl-title">Eclipsera</div>
+      <div>
+        <div class="hl-stat">Full UX</div>
+        <div class="hl-stat-label">Flow Design</div>
+      </div>
+      <div class="hl-desc">서브컬쳐 밀리터리 SF — 타이틀부터 전투 HUD까지 전체 UX·UI 직접 설계</div>
+      <div class="hl-arrow">View Project →</div>
+    </a>
+    <a href="#gogal" class="hl-card">
+      <div class="hl-badge">Personal B · 제작 중</div>
+      <div class="hl-title">고깔모자<br>아틀리에</div>
+      <div>
+        <div class="hl-stat">Unity</div>
+        <div class="hl-stat-label">직접 구현</div>
+      </div>
+      <div class="hl-desc">판타지 모바일 — 핵심 UX 플로우 & 전투 연출 Unity 직접 구현</div>
+      <div class="hl-arrow">View Project →</div>
+    </a>
+  </div>
+</section>
+
+<!-- ════ PROJECT A ════ -->
+<section id="proj-a" class="sec">
+  <div class="sec-num fi">03</div>
+  <div class="eyebrow fi">Project A — 티쓰리엔터테인먼트 · 오디션 PC</div>
+
+  <!-- 온보딩 -->
+  <div class="ph fi">
+    <div>
+      <div class="ph-badge">Start Flow Renewal · 2023.02 – 2024.01</div>
+      <div class="ph-title">온보딩 플로우 리뉴얼</div>
+      <div class="ph-sub">패처 · 서버&채널 · 로딩화면 — 3단계 시작 플로우 전체 재설계</div>
+    </div>
+    <div class="ph-kpis">
+      <div class="cc-kpi hi"><div class="cc-kpi-k">UV</div><div class="cc-kpi-v">+30%</div></div>
+      <div class="cc-kpi"><div class="cc-kpi-k">유저 만족도</div><div class="cc-kpi-v">증가</div></div>
+    </div>
+  </div>
+  <div class="hr" style="margin-bottom:40px;"></div>
+  <div class="p3 fi">
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="plabel">01 · 패처 리뉴얼</div>
+      <div class="pmini">START FLOW_패처</div>
+      <div class="pdesc" style="margin-bottom:14px;">볼거리 제공, 예상시간 표시, 다운로드 순서 최적화로 완료 체감 속도 개선</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div>
+          <div class="img16" style="aspect-ratio:1087/789"><img src="image/p05_patcher_before.JPG" alt="패처 전"><div class="img16-cap">리뉴얼 전 — p05_patcher_before.jpg</div><div class="img16-ph">p05_patcher_before.jpg</div></div>
+          <div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">리뉴얼 전</div>
+        </div>
+        <div>
+          <div class="img16" style="aspect-ratio:1024/576"><img src="image/p05_patcher_after.png" alt="패처 후"><div class="img16-cap">리뉴얼 후 — p05_patcher_after.jpg</div><div class="img16-ph">p05_patcher_after.jpg</div></div>
+          <div style="font-size:7px;color:var(--red);text-align:center;margin-top:5px;">리뉴얼 후</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="plabel">02 · 서버&채널 선택</div>
+      <div class="pmini">START FLOW_서버&채널</div>
+      <div class="pdesc" style="margin-bottom:14px;">불필요 정보 삭제, 서버 통합, 이벤트 배너 추가, 업데이트 내역 정리</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div>
+          <div class="img16" style="aspect-ratio:1025/766"><img src="image/p05_server_before.JPG" alt="서버 전"><div class="img16-cap">리뉴얼 전</div><div class="img16-ph">p05_server_before.jpg</div></div>
+          <div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">리뉴얼 전</div>
+        </div>
+        <div>
+          <div class="img16" style="aspect-ratio:1024/768"><img src="image/p05_server_after.png" alt="서버 후"><div class="img16-cap">리뉴얼 후</div><div class="img16-ph">p05_server_after.jpg</div></div>
+          <div style="font-size:7px;color:var(--red);text-align:center;margin-top:5px;">리뉴얼 후</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="plabel">03 · 로딩화면 리뉴얼</div>
+      <div class="pmini">START FLOW_로딩화면</div>
+      <div class="pdesc" style="margin-bottom:14px;">게임성 드러나는 기본 로딩. 특별 시즌에만 시즌 로딩 교체</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div>
+          <div class="img16" style="aspect-ratio:1024/768"><img src="image/p05_loading_basic.png" alt="기본 로딩"><div class="img16-cap">기본 로딩화면</div><div class="img16-ph">p05_loading_basic.jpg</div></div>
+          <div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">기본 로딩화면</div>
+        </div>
+        <div>
+          <div class="img16"><img src="image/p05_loading_season.jpg" alt="시즌 로딩"><div class="img16-cap">8주년 시즌</div><div class="img16-ph">p05_loading_season.jpg</div></div>
+          <div style="font-size:7px;color:var(--red);text-align:center;margin-top:5px;">8주년 시즌</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 루미룸 -->
+  <div class="hr" style="margin:72px 0 40px;"></div>
+  <div class="eyebrow fi">Project A-2 — PET & PETICON · 2022.07–09</div>
+  <div class="ph fi">
+    <div>
+      <div class="ph-title">신규 펫 시스템 — 루미룸</div>
+      <div class="ph-sub">버프 포함 시즌별 합성·진화 콘텐츠 · 우주·은하계 모티브</div>
+    </div>
+    <div class="ph-kpis">
+      <div class="cc-kpi hi"><div class="cc-kpi-k">매출</div><div class="cc-kpi-v">팀 최대</div></div>
+      <div class="cc-kpi hi"><div class="cc-kpi-k">기간</div><div class="cc-kpi-v">최단기</div></div>
+    </div>
+  </div>
+  <div class="p2 fi">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="plabel">Overview</div>
+      <div class="pdesc">배경 2D 리소스, UX UI 전체 제작, 3D 파트 렌더링 이미지 활용. 우주와 은하계를 모티브로 한 시즌별 테마 설계.</div>
+      <div style="margin-top:4px;">
+        <div class="img16" style="aspect-ratio:1024/768"><img src="image/p06_lumiroom_entry.jpg" alt="루미룸 진입"><div class="img16-cap">루미룸 진입 화면</div><div class="img16-ph">p06_lumiroom_entry.jpg</div></div>
+        <div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">루미룸 진입 화면</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div><div class="img16" style="aspect-ratio:1024/768"><img src="image/p06_lumi_main.jpg" alt="메인"><div class="img16-cap">루미룸 메인 — 임페리얼</div><div class="img16-ph">p06_lumi_main.jpg</div></div><div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">루미룸 메인</div></div>
+      <div><div class="img16" style="aspect-ratio:1024/768"><img src="image/p06_lumi_select.jpg" alt="펫 선택"><div class="img16-cap">펫 선택 화면</div><div class="img16-ph">p06_lumi_select.jpg</div></div><div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">펫 선택</div></div>
+      <div><div class="img16" style="aspect-ratio:1024/768"><img src="image/p06_lumi_combine.gif" alt="합성"><div class="img16-cap">합성 화면</div><div class="img16-ph">p06_lumi_combine.jpg</div></div><div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">합성 화면</div></div>
+      <div><div class="img16"><img src="image/p06_lumi_evolve.jpg" alt="진화"><div class="img16-cap">진화 결과</div><div class="img16-ph">p06_lumi_evolve.jpg</div></div><div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">진화 결과</div></div>
+    </div>
+  </div>
+
+  <!-- 드로잉 -->
+  <div class="hr" style="margin:72px 0 40px;"></div>
+  <div class="eyebrow fi">Drawing Skills</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:52px;" class="fi">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="plabel">01 · Black & White Label</div>
+      <div class="pmini">프리미엄 시즌 의상 — 배경 & 아이템 드로잉</div>
+      <div class="pdesc" style="margin-bottom:14px;">스테이블 디퓨전으로 초안 후 구름·별·프레임 직접 드로잉. 블랙+골드 / 화이트+골드 색상 체계.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div><div class="img16"><img src="image/p07_black_bg.jpg" alt="블랙배경"><div class="img16-cap">블랙라벨 배경</div><div class="img16-ph">p07_black_bg.jpg</div></div></div>
+        <div><div class="img16"><img src="image/p07_white_bg.jpg" alt="화이트배경"><div class="img16-cap">화이트라벨 배경</div><div class="img16-ph">p07_white_bg.jpg</div></div></div>
+        <div><div class="img16"><img src="image/p07_black_item.jpg" alt="블랙의상"><div class="img16-cap">블랙 의상 드로잉</div><div class="img16-ph">p07_black_item.jpg</div></div></div>
+        <div><div class="img16"><img src="image/p07_white_item.jpg" alt="화이트의상"><div class="img16-cap">화이트 의상 드로잉</div><div class="img16-ph">p07_white_item.jpg</div></div></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="plabel">02 · Audi Magazine Renewal</div>
+      <div class="pmini">시즌 매거진 — 캐릭터 일러스트</div>
+      <div class="pdesc" style="margin-bottom:14px;">인생네컷 트렌드를 반영해 리뉴얼 제안. 3D MAX → 파츠 → 리깅 → 편집 완성.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;">
+        <div><div class="img16" style="aspect-ratio:576/768"><img src="image/p07_mag_xmas.png" alt="크리스마스"><div class="img16-cap">크리스마스</div><div class="img16-ph">p07_mag_xmas.jpg</div></div></div>
+        <div><div class="img16" style="aspect-ratio:576/768"><img src="image/p07_mag_spring.png" alt="봄"><div class="img16-cap">봄 시즌</div><div class="img16-ph">p07_mag_spring.jpg</div></div></div>
+        <div><div class="img16" style="aspect-ratio:576/768"><img src="image/p07_mag_bubble.png" alt="버블"><div class="img16-cap">버블 시즌</div><div class="img16-ph">p07_mag_bubble.jpg</div></div></div>
+      </div>
+      <div style="border:1px solid var(--b);padding:18px 22px;margin-top:auto;">
+        <div style="font-size:8px;color:var(--red);font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">제작 프로세스</div>
+        <div class="steps">
+          <div class="step">3D MAX 파일</div><div class="step-arr">→</div>
+          <div class="step">파츠 입히기</div><div class="step-arr">→</div>
+          <div class="step">리깅 편집</div><div class="step-arr">→</div>
+          <div class="step">완성</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PROJECT B ════ -->
+<section id="proj-b" style="background:var(--bg2);border-bottom:1px solid var(--b);">
+  <div class="sec" style="border:none;">
+    <div class="sec-num fi">04</div>
+    <div class="eyebrow fi">Project B — 아이오넷 · 퍼즐오디션</div>
+    <div class="ph fi">
+      <div>
+        <div class="ph-badge">2018.11 – 2021.04 · Alpha → Launch</div>
+        <div class="ph-title">컨셉 설계 &<br>게임 완성</div>
+        <div class="ph-sub">알파부터 런칭까지 컨셉 설계 전담 — UI/UX 디자인까지 진행</div>
+      </div>
+      <div class="ph-kpis">
+        <div class="cc-kpi hi"><div class="cc-kpi-k">투자</div><div class="cc-kpi-v">한빛소프트</div></div>
+        <div class="cc-kpi hi"><div class="cc-kpi-k">순위</div><div class="cc-kpi-v">인기 Top10</div></div>
+        <div class="cc-kpi"><div class="cc-kpi-k">현지화</div><div class="cc-kpi-v">태국 런칭</div></div>
+      </div>
+    </div>
+    <div class="hr" style="margin-bottom:40px;"></div>
+    <div class="p2 fi">
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="plabel">Design Decision</div>
+        <div class="pdesc"><strong style="color:var(--fw);">아바타와 퍼즐의 연결고리 부족</strong>이 핵심 고민. 실루엣으로 구분되는 도형에 패션 아이템을 대응시켜 해결. 원색 컬러 + 원·삼각·사각·하트·마름모 → 모자·장갑·치마·가방·신발.</div>
+        <div class="pitem"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span class="pitem-name">기본 블록·폭탄 블록</span><span class="pitem-date">2019.02–05</span></div><div class="pitem-desc">패션 아이템 형태의 기본 매치 블록</div></div>
+        <div class="pitem"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span class="pitem-name">장애물 블록</span><span class="pitem-date">2019.06–09</span></div><div class="pitem-desc">방해 요소 — 커피잔, 버튼, 트로피 등</div></div>
+        <div class="pitem"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span class="pitem-name">퍼즐 아이템</span><span class="pitem-date">2019.07</span></div><div class="pitem-desc">망치, 조커, 글러브 등 특수 아이템</div></div>
+        <div class="hr-red" style="margin:8px 0;"></div>
+        <div class="plabel">차별화 — 배틀 시스템</div>
+        <div class="ditem"><div class="ditem-title">1:1 아레나</div><div class="ditem-desc">시간제 퍼즐 대전 — 점수 경쟁</div></div>
+        <div class="ditem"><div class="ditem-title">팀 댄스배틀</div><div class="ditem-desc">방해 블록 전송 — 팀전·개인전</div></div>
+        <div class="ditem"><div class="ditem-title">캐릭터 연동</div><div class="ditem-desc">아바타가 실시간으로 화면에서 춤춤</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div><div class="img16" style="aspect-ratio:652/128"><img src="image/p08_block_basic.png" alt="기본블록"><div class="img16-cap">기본 블록</div><div class="img16-ph">p08_block_basic.jpg</div></div><div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">기본 블록</div></div>
+          <div><div class="img16" style="aspect-ratio:847/512"><img src="image/p08_block_obstacle.png" alt="장애물"><div class="img16-cap">장애물 블록</div><div class="img16-ph">p08_block_obstacle.jpg</div></div><div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">장애물 블록</div></div>
+          <div><div class="img16" style="aspect-ratio:1080/608"><img src="image/p09_main_before.png" alt="메인전"><div class="img16-cap">리뉴얼 전</div><div class="img16-ph">p09_main_before.jpg</div></div><div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">메인 리뉴얼 전</div></div>
+          <div><div class="img16" style="aspect-ratio:600/311"><img src="image/p09_main_after.png" alt="메인후"><div class="img16-cap">리뉴얼 후</div><div class="img16-ph">p09_main_after.jpg</div></div><div style="font-size:7px;color:var(--red);text-align:center;margin-top:5px;">리뉴얼 후</div></div>
+        </div>
+        <!-- 1:1 아레나 와이드하게 -->
+        <div>
+          <div class="img21" style="aspect-ratio:1920/994"><img src="image/p09_arena_main.png" alt="아레나 메인"><div class="img21-ph">1:1 아레나 인게임 — p09_arena_main.jpg</div></div>
+          <div style="font-size:7px;color:var(--red);text-align:center;margin-top:5px;">1:1 아레나 인게임 — 핵심 차별화 화면</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+          <div><div class="img16"><img src="image/p09_arena_flow1.jpg" alt="플로우1"><div class="img16-cap">아레나 플로우 1</div><div class="img16-ph">p09_arena_flow1.jpg</div></div></div>
+          <div><div class="img16"><img src="image/p09_arena_flow2.jpg" alt="플로우2"><div class="img16-cap">아레나 플로우 2</div><div class="img16-ph">p09_arena_flow2.jpg</div></div></div>
+          <div><div class="img16" style="aspect-ratio:1012/570"><img src="image/p09_dance_battle.png" alt="댄스배틀"><div class="img16-cap">댄스배틀 인게임</div><div class="img16-ph">p09_dance_battle.jpg</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ECLIPSERA ════ -->
+<section id="eclipsera" class="sec">
+  <div class="sec-num fi">05</div>
+  <div class="eyebrow fi">Personal Project A · 완성</div>
+  <div class="ph fi">
+    <div>
+      <div class="ph-title">Eclipsera</div>
+      <div class="ph-sub">서브컬쳐 밀리터리 SF 모바일 — 전체 UX·UI 직접 설계</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;align-self:flex-start;margin-top:8px;">
+      <div style="display:flex;gap:10px;">
+        <a href="https://www.figma.com/design/ZWnimKvjhk5Y45mm21ZIZE/Eclipsera?node-id=55-5&t=dVoUkTppgLKNMt9A-1" target="_blank" class="lnk primary">⬡ Figma ↗</a>
+        <a href="https://cloud.protopie.io/p/242ec235680b60687fd1e724" target="_blank" class="lnk">▷ ProtoPie ↗</a>
+      </div>
+      <div style="font-size:8px;color:var(--fh);font-family:var(--mono);letter-spacing:0.05em;">초기 UX 검증용 프로토타입</div>
+    </div>
+  </div>
+  <div class="hr" style="margin-bottom:40px;"></div>
+  <div class="p2 fi" style="margin-bottom:40px;">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="plabel">Overview</div>
+      <div class="pdesc"><strong style="color:var(--fw);">캐릭터 그레이스케일</strong>로 선택/미선택 상태 표현. 통신단말기·스캔 연출 등 게임 세계관 몰입 설계에 집중.</div>
+      <div class="ditem"><div class="ditem-title">UX 플로우</div><div class="ditem-desc">타이틀 → 프롤로그 → 튜토리얼 → 홈 → 강화 → 편성 → 전투</div></div>
+      <div class="ditem"><div class="ditem-title">핵심 설계</div><div class="ditem-desc">캐릭터 상태 시각화 / 정보 위계 / 전투 HUD 좌우 배치</div></div>
+      <div class="ditem"><div class="ditem-title">세계관 연출</div><div class="ditem-desc">통신단말기 폴더 UI / 스캔 / 지문 인식 시퀀스</div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_title.jpg" alt="타이틀"><div class="img16-cap">타이틀 화면</div><div class="img16-ph">ec_title.jpg</div></div></div>
+      <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_home.jpg" alt="홈"><div class="img16-cap">홈 화면</div><div class="img16-ph">ec_home.jpg</div></div></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" class="fi">
+    <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_enhance.jpg" alt="강화"><div class="img16-cap">강화 화면</div><div class="img16-ph">ec_enhance.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">강화 화면</div></div>
+    <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_formation.jpg" alt="편성"><div class="img16-cap">편성 화면</div><div class="img16-ph">ec_formation.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">편성 화면</div></div>
+    <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_battle_hud.jpg" alt="전투 HUD"><div class="img16-cap">전투 HUD</div><div class="img16-ph">ec_battle_hud.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">전투 HUD</div></div>
+    <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_terminal.jpg" alt="통신단말기"><div class="img16-cap">통신단말기</div><div class="img16-ph">ec_terminal.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">통신단말기</div></div>
+    <div><div class="img16"><img src="image/ec_scan.jpg" alt="스캔"><div class="img16-cap">스캔 연출</div><div class="img16-ph">ec_scan.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">스캔 연출</div></div>
+    <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_campaign.jpg" alt="캠페인"><div class="img16-cap">메인 캠페인</div><div class="img16-ph">ec_campaign.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">메인 캠페인</div></div>
+  </div>
+</section>
+
+<!-- ════ 고깔모자 아틀리에 ════ -->
+<section id="gogal" style="background:var(--bg2);border-bottom:1px solid var(--b);">
+  <div class="sec" style="border:none;">
+    <div class="sec-num fi">06</div>
+    <div class="eyebrow fi">Personal Project B · 제작 중</div>
+    <div class="ph fi">
+      <div>
+        <div class="ph-title">고깔모자 아틀리에</div>
+        <div class="ph-sub">일본 애니메이션 게임 IP 재해석 — 컨셉 설계부터 UX·Unity 연출까지</div>
+      </div>
+    </div>
+    <div class="hr" style="margin-bottom:40px;"></div>
+    <div class="p2 fi" style="margin-bottom:40px;">
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="plabel">Overview</div>
+        <div class="pdesc"><strong style="color:var(--fw);">일본 애니메이션 게임 IP를 새로운 세계관으로 재해석</strong>하는 컨셉 설계부터 시작. 로그인 → 탐색 → 마도서 → 전투까지 핵심 UX 플로우를 직접 설계하고, Unity로 전투 연출까지 구현.</div>
+        <div class="ditem"><div class="ditem-title">UX 플로우</div><div class="ditem-desc">로그인 → 탐색 → 마도서 → 전투 진입 → 전투 화면</div></div>
+        <div class="ditem"><div class="ditem-title">Unity 구현</div><div class="ditem-desc">전투 연출 직접 구현 — 오프닝 애니메이션 포함</div></div>
+        <div class="ditem"><div class="ditem-title">현재 상황</div><div class="ditem-desc">오프닝 연출 완료 · 전투 화면 설계 중</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div><div class="img16"><img src="image/gogal_login.jpg" alt="로그인"><div class="img16-cap">로그인 화면</div><div class="img16-ph">gogal_login.jpg</div></div><div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">로그인 화면</div></div>
+        <div><div class="img16"><img src="image/gogal_explore.jpg" alt="탐색"><div class="img16-cap">탐색 화면</div><div class="img16-ph">gogal_explore.jpg</div></div><div style="font-size:7px;color:var(--fh);text-align:center;margin-top:5px;">탐색 화면</div></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" class="fi">
+      <div><div class="img16"><img src="image/gogal_grimoire.jpg" alt="마도서"><div class="img16-cap">마도서</div><div class="img16-ph">gogal_grimoire.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">마도서</div></div>
+      <div><div class="img16"><img src="image/gogal_battle_entry.jpg" alt="전투진입"><div class="img16-cap">Unity 직접 구현</div><div class="img16-ph">gogal_battle_entry.jpg</div></div><div style="font-size:8px;color:var(--red);text-align:center;margin-top:6px;">전투 진입 — Unity 연출</div></div>
+      <div><div class="img16"><img src="image/gogal_battle.jpg" alt="전투"><div class="img16-cap">전투 화면</div><div class="img16-ph">gogal_battle.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">전투 화면</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 시대로그 ════ -->
+<section id="sidaelog" class="sec">
+  <div class="sec-num fi">07</div>
+  <div class="eyebrow fi">시대log — Insight Source</div>
+  <div class="disp fi" style="font-size:72px;">나는 게임을<br>이렇게 읽는다</div>
+  <div class="sl-grid fi">
+    <div class="body">시대로그는 게임을 플레이하며 개발자의 의도와<br>유저의 감정이 어떻게 설계되었는지를 분석하는<br>게임 UX 매거진입니다.<br><br>이 인사이트가 실제 UX 설계의 근거가 됩니다.</div>
+    <div>
+      <div class="sl-stat"><span class="sl-stat-k">Articles</span><span class="sl-stat-n">12+</span></div>
+      <div class="sl-stat"><span class="sl-stat-k">Games Analyzed</span><span class="sl-stat-n">08</span></div>
+      <div class="sl-stat"><span class="sl-stat-k">Frameworks</span><span class="sl-stat-n">05</span></div>
+    </div>
+  </div>
+  <div class="sl-fws fi">
+    <div class="sl-fw"><div class="sl-fw-n">01</div><div class="sl-fw-name">감정 설계</div><div class="sl-fw-en">Emotion</div><div class="sl-fw-desc">게임이 유저에게 어떤 감정을 느끼게 만드는가</div><div class="sl-fw-game">Clair Obscur 33</div></div>
+    <div class="sl-fw"><div class="sl-fw-n">02</div><div class="sl-fw-name">몰입 설계</div><div class="sl-fw-en">Immersion</div><div class="sl-fw-desc">유저를 어떻게 게임 안으로 끌어당기는가</div><div class="sl-fw-game">Alan Wake 2</div></div>
+    <div class="sl-fw"><div class="sl-fw-n">03</div><div class="sl-fw-name">책임 설계</div><div class="sl-fw-en">Responsibility</div><div class="sl-fw-desc">유저가 선택의 결과에 책임을 지게 만드는가</div><div class="sl-fw-game">Dark Souls</div></div>
+    <div class="sl-fw"><div class="sl-fw-n">04</div><div class="sl-fw-name">선택 설계</div><div class="sl-fw-en">Choice</div><div class="sl-fw-desc">자유로워 보이지만 제한된 선택을 설계하는가</div><div class="sl-fw-game">Disco Elysium</div></div>
+    <div class="sl-fw"><div class="sl-fw-n">05</div><div class="sl-fw-name">지연 설계</div><div class="sl-fw-en">Observation</div><div class="sl-fw-desc">특정 지점에서 유저를 오래 머물게 만드는가</div><div class="sl-fw-game">Obra Dinn</div></div>
+  </div>
+  <div class="sl-bridge fi">
+    <div><div class="sl-bridge-tag">시대로그 분석</div><div class="sl-bridge-text">게임의 의도를 읽고<br>유저 감정의 흐름을 프레임으로 분류한다</div></div>
+    <div class="sl-bridge-arr">→</div>
+    <div><div class="sl-bridge-tag">실무 UX 설계</div><div class="sl-bridge-text">그 프레임을 실제 게임 UI에 적용해<br>플레이어가 원하는 감정을 경험하게 만든다</div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="ft-name">김혜수</div>
+    <div class="ft-role">UX · UI Designer · 7 Years · NEOWIZ Onetake Studio 지원</div>
+  </div>
+  <a href="https://sidaelog.vercel.app" target="_blank" class="ft-sidae">
+    <span class="rdot" style="margin-right:8px;"></span>시대log · sidaelog.vercel.app ↗
+  </a>
+</footer>
+
+<script>
+// GNB active
+const secs = document.querySelectorAll('section[id]');
+const btns = document.querySelectorAll('.gnb-btn');
+const obs = new IntersectionObserver(e => {
+  e.forEach(en => {
+    if(en.isIntersecting){
+      btns.forEach(b => b.classList.remove('on'));
+      const t = document.querySelector(`.gnb-btn[href="#${en.target.id}"]`);
+      if(t) t.classList.add('on');
+    }
+  });
+},{threshold:0.2});
+secs.forEach(s => obs.observe(s));
+
+// 페이드인
+const fis = document.querySelectorAll('.fi');
+const fObs = new IntersectionObserver(e => {
+  e.forEach(en => { if(en.isIntersecting) en.target.classList.add('on'); });
+},{threshold:0.08});
+fis.forEach(f => fObs.observe(f));
+</script>
+</body>
+</html>
