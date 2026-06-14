@@ -375,6 +375,11 @@ footer{
 .sw-use{font-size:8px;color:var(--fh);font-family:var(--mono);line-height:1.45;}
 .cs-note{background:var(--bg3);border:1px solid var(--b2);padding:13px 16px;font-size:11px;color:var(--fs);line-height:1.7;margin-bottom:16px;max-width:760px;}
 .cs-note strong{color:var(--fw);font-family:var(--mono);}
+
+/* 이클립세라 홈 — 호버 시 팝업 이미지로 크로스페이드 */
+.ec-home-swap .ec-home-hover{opacity:0;transition:opacity 0.35s ease;pointer-events:none;z-index:1;}
+.ec-home-swap:hover .ec-home-hover{opacity:1;}
+.ec-home-swap:hover img{transform:none;}
 </style>
 </head>
 <body>
@@ -949,27 +954,183 @@ footer{
     </div>
   </div>
   <div class="hr" style="margin-bottom:40px;"></div>
+
+  <!-- 시나리오 -->
+  <div class="fi" style="margin-bottom:44px;">
+    <div class="plabel" style="margin-bottom:12px;">Scenario — 시나리오</div>
+    <div class="disp" style="font-size:48px;margin-bottom:6px;">SERAPH-X</div>
+    <div style="font-size:12px;color:var(--red);font-weight:500;margin-bottom:18px;">X성분으로 각성한 다크히어로 부대를 지휘해 폐허 지구를 수복한다</div>
+    <div class="pdesc" style="max-width:760px;">에테리온 침공 100년째, 인류는 ‘돔 바스티온’에서만 살아남았다. 사기를 끌어올릴 영웅을 만들기 위해 인류연합정부는 연구소에 프로젝트를 의뢰한다. 제조라인에 에테리온 세포 잔여물인 <strong style="color:var(--fw);">X성분</strong>이 혼입되어, 감정 억제와 전투 본능을 지닌 실험체 ‘세라프’가 탄생한다.</div>
+  </div>
+
+  <!-- 세계관 / 갈등 / 타임라인 -->
+  <div class="hr" style="margin-bottom:32px;"></div>
+  <div class="fi" style="margin-bottom:44px;">
+    <div class="plabel" style="margin-bottom:18px;">Worldbuilding — 세계관</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:24px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:11px;font-weight:700;color:var(--fw);margin-bottom:4px;">세계관</div>
+        <div class="ditem"><div class="ditem-title">시대 · 상황</div><div class="ditem-desc">2572년. 외계종 에테리온의 100년 침공으로 폐허가 된 지구. 인류는 ‘돔 바스티온’ 안에서 간신히 생존한다. 돔 밖은 약탈·강도·분쟁이 상시 발생하는 무정부 상태.</div></div>
+        <div class="ditem"><div class="ditem-title">프로젝트</div><div class="ditem-desc">인류연합정부가 ‘사기를 끌어올릴 영웅’ 제작을 의뢰 → 스포어레인 세포 잔여물 X성분이 혼입됨</div></div>
+        <div class="ditem"><div class="ditem-title">세력도</div><div class="ditem-desc">인류연합(아크 바스티온)·연구소 본진 / 에테리온(지상 촉수군·궤도 요새) / 약탈자 연합(돔 외곽 거점 무장 생존자)</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:11px;font-weight:700;color:var(--fw);margin-bottom:4px;">메인 갈등 구조</div>
+        <div class="ditem"><div class="ditem-title">외부 갈등</div><div class="ditem-desc">에테리온 침공 + 약탈자 연합의 교란 (양면전)</div></div>
+        <div class="ditem"><div class="ditem-title">내부 갈등</div><div class="ditem-desc">X성분의 폭주 한계와 수명 문제</div></div>
+        <div class="ditem"><div class="ditem-title">플레이어 · 지휘관</div><div class="ditem-desc">X 레시피 부대를 지휘하며 임무 / 인간성 균형을 선택</div></div>
+      </div>
+    </div>
+    <div style="border:1px solid var(--b);padding:18px 22px;">
+      <div style="font-size:8px;color:var(--red);font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;">Timeline</div>
+      <div class="steps">
+        <div class="step">2472 · 에테리온 본격 침공 → 도시 붕괴</div><div class="step-arr">→</div>
+        <div class="step">2525 · 에테리온의 X성분 혼입</div><div class="step-arr">→</div>
+        <div class="step">2572 · 플레이 시작 · 작전 개시</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 색상(오버뷰 자리) + 홈 -->
+  <div class="hr" style="margin-bottom:32px;"></div>
   <div class="p2 fi" style="margin-bottom:40px;">
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="plabel">Overview</div>
-      <div class="pdesc"><strong style="color:var(--fw);">캐릭터 그레이스케일</strong>로 선택/미선택 상태 표현. 통신단말기·스캔 연출 등 게임 세계관 몰입 설계에 집중.</div>
-      <div class="ditem"><div class="ditem-title">UX 플로우</div><div class="ditem-desc">타이틀 → 프롤로그 → 튜토리얼 → 홈 → 강화 → 편성 → 전투</div></div>
-      <div class="ditem"><div class="ditem-title">핵심 설계</div><div class="ditem-desc">캐릭터 상태 시각화 / 정보 위계 / 전투 HUD 좌우 배치</div></div>
-      <div class="ditem"><div class="ditem-title">세계관 연출</div><div class="ditem-desc">통신단말기 폴더 UI / 스캔 / 지문 인식 시퀀스</div></div>
+    <div style="display:flex;flex-direction:column;gap:13px;">
+      <div class="plabel">Color System — 색상</div>
+      <div class="pdesc" style="margin-bottom:4px;">푸른 계열로 첨단 기술·미래감을, 유사색 옐로우그린으로 컴퓨터 시스템을 연상시킴. 무채색(화이트·그레이)으로 기계적 느낌을, 블랙으로 기계의 무게감을 더함.</div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="font-size:9px;font-family:var(--mono);color:var(--fs);letter-spacing:0.04em;width:84px;flex-shrink:0;">Primary · 블루</div>
+        <div style="display:flex;gap:6px;">
+          <span style="width:20px;height:20px;border:1px solid var(--b);background:#5BC6F5;" title="#5BC6F5"></span>
+          <span style="width:20px;height:20px;border:1px solid var(--b);background:#B3DDEE;" title="#B3DDEE"></span>
+          <span style="width:20px;height:20px;border:1px solid var(--b);background:#6E8398;" title="#6E8398"></span>
+          <span style="width:20px;height:20px;border:1px solid var(--b);background:#AFE3F7;" title="#AFE3F7"></span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="font-size:9px;font-family:var(--mono);color:var(--fs);letter-spacing:0.04em;width:84px;flex-shrink:0;">포인트 · 옐로우그린</div>
+        <div style="display:flex;gap:6px;">
+          <span style="width:20px;height:20px;border:1px solid var(--b);background:#A0E55F;" title="#A0E55F"></span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="font-size:9px;font-family:var(--mono);color:var(--fs);letter-spacing:0.04em;width:84px;flex-shrink:0;">경고</div>
+        <div style="display:flex;gap:6px;">
+          <span style="width:20px;height:20px;border:1px solid var(--b);background:#F5C23E;" title="#F5C23E"></span>
+          <span style="width:20px;height:20px;border:1px solid var(--b);background:#E23B2E;" title="#E23B2E"></span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="font-size:9px;font-family:var(--mono);color:var(--fs);letter-spacing:0.04em;width:84px;flex-shrink:0;">무채색</div>
+        <div style="display:flex;gap:6px;">
+          <span style="width:20px;height:20px;border:1px solid var(--b);background:#FFFFFF;" title="#FFFFFF · White"></span>
+          <span style="width:20px;height:20px;border:1px solid var(--b);background:#C9CFD6;" title="#C9CFD6 · Gray"></span>
+          <span style="width:20px;height:20px;border:1px solid var(--b);background:#1A1D22;" title="#1A1D22 · Black"></span>
+        </div>
+      </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:8px;">
-      <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_title.jpg" alt="타이틀"><div class="img16-cap">타이틀 화면</div><div class="img16-ph">ec_title.jpg</div></div></div>
-      <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_home.jpg" alt="홈"><div class="img16-cap">홈 화면</div><div class="img16-ph">ec_home.jpg</div></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px;justify-content:center;">
+      <div><div class="img16 ec-home-swap"><img src="image/ec_home.jpg" alt="홈"><img src="image/ec_home_popup.jpg" alt="홈 팝업" class="ec-home-hover" onerror="this.style.display='none'"><div class="img16-cap">홈 화면 · 호버 시 팝업</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">홈 화면 <span style="opacity:0.55;">(호버 → 팝업)</span></div></div>
     </div>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" class="fi">
-    <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_enhance.jpg" alt="강화"><div class="img16-cap">강화 화면</div><div class="img16-ph">ec_enhance.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">강화 화면</div></div>
-    <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_formation.jpg" alt="편성"><div class="img16-cap">편성 화면</div><div class="img16-ph">ec_formation.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">편성 화면</div></div>
-    <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_battle_hud.jpg" alt="전투 HUD"><div class="img16-cap">전투 HUD</div><div class="img16-ph">ec_battle_hud.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">전투 HUD</div></div>
-    <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_terminal.jpg" alt="통신단말기"><div class="img16-cap">통신단말기</div><div class="img16-ph">ec_terminal.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">통신단말기</div></div>
-    <div><div class="img16"><img src="image/ec_scan.jpg" alt="스캔"><div class="img16-cap">스캔 연출</div><div class="img16-ph">ec_scan.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">스캔 연출</div></div>
-    <div><div class="img16" style="aspect-ratio:3840/2160"><img src="image/ec_campaign.jpg" alt="캠페인"><div class="img16-cap">메인 캠페인</div><div class="img16-ph">ec_campaign.jpg</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">메인 캠페인</div></div>
+  <!-- 페이지 구성 -->
+  <div class="fi" style="margin-bottom:48px;">
+    <div class="plabel" style="margin-bottom:16px;">페이지 구성</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+      <div><div class="img16"><img src="image/ec_campaign.jpg" alt="캠페인"><div class="img16-cap">캠페인</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">캠페인</div></div>
+      <div><div class="img16"><img src="image/ec_campaign_popup.jpg" alt="캠페인 팝업"><div class="img16-cap">캠페인 팝업</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">캠페인 팝업</div></div>
+      <div><div class="img16"><img src="image/ec_formation.jpg" alt="편성"><div class="img16-cap">편성</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">편성</div></div>
+      <div><div class="img16"><img src="image/ec_enhance.jpg" alt="강화"><div class="img16-cap">강화</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">강화</div></div>
+      <div><div class="img16"><img src="image/ec_enhance_detail1.jpg" alt="강화 상세화면 1"><div class="img16-cap">강화 상세화면 1</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">강화 상세화면 1</div></div>
+      <div><div class="img16"><img src="image/ec_enhance_detail2.jpg" alt="강화 상세화면 2"><div class="img16-cap">강화 상세화면 2</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">강화 상세화면 2</div></div>
+      <div><div class="img16"><img src="image/ec_terminal.jpg" alt="통신"><div class="img16-cap">통신</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">통신</div></div>
+      <div><div class="img16"><img src="image/ec_battle.gif" alt="전투 유니티 연출"><div class="img16-cap">전투 — Unity 연출</div></div><div style="font-size:8px;color:var(--red);text-align:center;margin-top:6px;">전투 · Unity 연출 영상</div></div>
+    </div>
   </div>
+  <!-- 전체 UX 플로우 -->
+  <div class="hr" style="margin-bottom:34px;"></div>
+  <div class="fi">
+    <div class="plabel" style="margin-bottom:6px;">전체 UX 플로우</div>
+    <div class="pdesc" style="margin-bottom:24px;">시작문구부터 튜토리얼까지 진입 흐름 (참고용 · 확대 없음)</div>
+    <div style="display:flex;align-items:flex-start;justify-content:center;gap:8px;flex-wrap:wrap;">
+      <div style="flex:1;max-width:160px;min-width:90px;text-align:center;">
+        <div style="aspect-ratio:16/9;background:var(--bg3);border:1px solid var(--b);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
+          <img src="image/ec_flow1.jpg" alt="시작문구" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">
+        </div>
+        <div style="font-size:7px;color:var(--fh);font-family:var(--mono);margin-top:6px;letter-spacing:0.03em;">01 · 시작문구</div>
+      </div>
+      <div style="color:var(--red);font-size:12px;flex:0 0 auto;padding-top:16px;">→</div>
+      <div style="flex:1;max-width:160px;min-width:90px;text-align:center;">
+        <div style="aspect-ratio:16/9;background:var(--bg3);border:1px solid var(--b);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
+          <img src="image/ec_flow2.jpg" alt="타이틀" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">
+        </div>
+        <div style="font-size:7px;color:var(--fh);font-family:var(--mono);margin-top:6px;letter-spacing:0.03em;">02 · 타이틀</div>
+      </div>
+      <div style="color:var(--red);font-size:12px;flex:0 0 auto;padding-top:16px;">→</div>
+      <div style="flex:1;max-width:160px;min-width:90px;text-align:center;">
+        <div style="aspect-ratio:16/9;background:var(--bg3);border:1px solid var(--b);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
+          <img src="image/ec_flow3.gif" alt="닉네임 팝업" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">
+        </div>
+        <div style="font-size:7px;color:var(--fh);font-family:var(--mono);margin-top:6px;letter-spacing:0.03em;">03 · 닉네임 팝업</div>
+      </div>
+      <div style="color:var(--red);font-size:12px;flex:0 0 auto;padding-top:16px;">→</div>
+      <div style="flex:1;max-width:160px;min-width:90px;text-align:center;">
+        <div style="aspect-ratio:16/9;background:var(--bg3);border:1px solid var(--b);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
+          <img src="image/ec_flow4.jpeg" alt="진입연출" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">
+        </div>
+        <div style="font-size:7px;color:var(--fh);font-family:var(--mono);margin-top:6px;letter-spacing:0.03em;">04 · 진입연출</div>
+      </div>
+      <div style="color:var(--red);font-size:12px;flex:0 0 auto;padding-top:16px;">→</div>
+      <div style="flex:1;max-width:160px;min-width:90px;text-align:center;">
+        <div style="aspect-ratio:16/9;background:var(--bg3);border:1px solid var(--b);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
+          <img src="image/ec_flow5.jpg" alt="프롤로그" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">
+        </div>
+        <div style="font-size:7px;color:var(--fh);font-family:var(--mono);margin-top:6px;letter-spacing:0.03em;">05 · 프롤로그</div>
+      </div>
+      <div style="color:var(--red);font-size:12px;flex:0 0 auto;padding-top:16px;">→</div>
+      <div style="flex:1;max-width:160px;min-width:90px;text-align:center;">
+        <div style="aspect-ratio:16/9;background:var(--bg3);border:1px solid var(--b);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;">
+          <img src="image/ec_flow6.jpg" alt="튜토리얼" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">
+        </div>
+        <div style="font-size:7px;color:var(--fh);font-family:var(--mono);margin-top:6px;letter-spacing:0.03em;">06 · 튜토리얼</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 게임 루프 -->
+  <div class="hr" style="margin:44px 0 32px;"></div>
+  <div class="fi" style="margin-bottom:44px;">
+    <div class="plabel" style="margin-bottom:18px;">Game Loop — 게임 루프</div>
+    <div style="margin-bottom:18px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:11px;"><span style="width:11px;height:11px;background:#161616;border:1px solid var(--b3);flex-shrink:0;"></span><span style="font-size:9px;font-family:var(--mono);letter-spacing:0.1em;color:var(--fs);">MAIN LOOP</span></div>
+      <div class="steps">
+        <div class="step">로그인 & 홈 진입</div><div class="step-arr">→</div>
+        <div class="step">일일 보상 & 이벤트</div><div class="step-arr">→</div>
+        <div class="step">메인 스토리 / 이벤트 스테이지</div><div class="step-arr">→</div>
+        <div class="step">전투 진입</div><div class="step-arr">→</div>
+        <div class="step">전투 결과 · 보상</div>
+      </div>
+    </div>
+    <div style="margin-bottom:26px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:11px;"><span style="width:11px;height:11px;background:#3B7BD8;flex-shrink:0;"></span><span style="font-size:9px;font-family:var(--mono);letter-spacing:0.1em;color:var(--fs);">BATTLE LOOP</span></div>
+      <div class="steps">
+        <div class="step">로딩 & 출격 연출</div><div class="step-arr">→</div>
+        <div class="step">이동·사격·스킬 UI</div><div class="step-arr">→</div>
+        <div class="step">적 조우 · 기본 공격/스킬</div><div class="step-arr">→</div>
+        <div class="step">폭주 게이지 충전 · 발동</div><div class="step-arr">→</div>
+        <div class="step">폭주 상태 전투</div><div class="step-arr">→</div>
+        <div class="step">보스전 · 클리어 조건</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><span style="width:11px;height:11px;border:1px solid var(--b3);flex-shrink:0;"></span><span style="font-size:9px;font-family:var(--mono);letter-spacing:0.1em;color:var(--fs);">META STRUCTURE</span></div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--b);">
+      <div style="background:var(--bg);padding:20px 18px;"><div style="font-size:13px;font-weight:700;color:var(--fw);margin-bottom:10px;">성장 시스템</div><div style="font-size:9px;color:var(--fs);line-height:1.75;">캐릭터 레벨업 · 스킬 강화 · 장비/모듈 업그레이드 · 폭주 안정화 연구(패널티 완화 트리)</div></div>
+      <div style="background:var(--bg);padding:20px 18px;"><div style="font-size:13px;font-weight:700;color:var(--fw);margin-bottom:10px;">수집 시스템</div><div style="font-size:9px;color:var(--fs);line-height:1.75;">신규 캐릭터 / 무기 가챠 · 파편 파밍 · 한정 이벤트 / 굿즈 수집</div></div>
+      <div style="background:var(--bg);padding:20px 18px;"><div style="font-size:13px;font-weight:700;color:var(--fw);margin-bottom:10px;">스토리 · 이벤트</div><div style="font-size:9px;color:var(--fs);line-height:1.75;">시즌별 스토리 지역 해금 · 선택지 분기형 이벤트(보상·엔딩 다양화)</div></div>
+      <div style="background:var(--bg);padding:20px 18px;"><div style="font-size:13px;font-weight:700;color:var(--fw);margin-bottom:10px;">라이브 콘텐츠</div><div style="font-size:9px;color:var(--fs);line-height:1.75;">약탈자 레이드 · PVP 모드 · 주간 미션</div></div>
+      <div style="background:var(--bg);padding:20px 18px;"><div style="font-size:13px;font-weight:700;color:var(--fw);margin-bottom:10px;">상점 & 경제</div><div style="font-size:9px;color:var(--fs);line-height:1.75;">재화 사용 — 가챠 · 강화 · 상점 구매</div></div>
+    </div>
+  </div>
+
 </section>
 
 <!-- ════ 고깔모자 아틀리에 ════ -->
@@ -984,9 +1145,72 @@ footer{
       </div>
     </div>
     <div class="hr" style="margin-bottom:40px;"></div>
-    <!-- 제안 개요 + 핵심 화면 -->
-    <!-- 좌: 설명+컬러(sticky) / 우: 화면 플로우 세로 스택 -->
-    <div class="p2 fi" style="margin-bottom:48px;align-items:start;">
+
+    <!-- 세계관 -->
+    <div class="hr" style="margin-bottom:32px;"></div>
+    <div class="fi" style="margin-bottom:24px;">
+      <div class="plabel" style="margin-bottom:12px;">Worldbuilding — 세계관</div>
+      <div class="pdesc" style="max-width:760px;">광대한 월드 자체가 게임의 주인공인 <strong style="color:var(--fw);">『원신』</strong>의 철학을 벤치마킹.</div>
+    </div>
+    <div class="fi" style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;align-items:start;margin-bottom:48px;">
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="plabel">Story</div>
+        <div class="pdesc"><strong style="color:var(--fw);">마법사로 태어나야 마법을 쓸 수 있는 세계.</strong> 하지만 사실은 누구나 특정 재료만 있다면 마법을 쓸 수 있었다. 평범한 소녀가 마법을 쓰는 방법을 알게 되고, 세상을 뒤바꿀 수 있는 싸움의 한복판에 서게 된다.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="ditem"><div class="ditem-title">은엽수</div><div class="ditem-desc">마법의 잉크를 만드는 재료</div></div>
+        <div class="ditem"><div class="ditem-title">챙모자 군단</div><div class="ditem-desc">금지 마법을 사용하는 적</div></div>
+        <div class="ditem"><div class="ditem-title">‘마법을 그린다’</div><div class="ditem-desc">기록된 마법 진(陣)을 발동한다</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="ditem"><div class="ditem-title">KPI</div><div class="ditem-desc">세계관의 기억을 통해 유저를 지속적으로 돌아오게 만드는 것</div></div>
+        <div class="ditem"><div class="ditem-title">BM</div><div class="ditem-desc">월드 체류를 전제로 한 장기 라이브 서비스</div></div>
+        <div class="ditem"><div class="ditem-title">UX·UI 철학</div><div class="ditem-desc">세계관을 체감하도록 UI는 의도적으로 정리. 강조나 특정 감정을 유도하지 않고, 세계관에 거슬리지 않을 정도의 디자인. 필요할 때 UI를 제공.</div></div>
+      </div>
+    </div>
+
+    <!-- 주요 씬별 제안 -->
+    <div class="hr" style="margin-bottom:32px;"></div>
+    <div class="fi">
+      <div class="plabel" style="margin-bottom:6px;">Scene Proposals — 주요 씬별 제안</div>
+      <div class="pdesc" style="margin-bottom:24px;max-width:760px;">로그인부터 종료까지, 세계관을 체감시키는 씬별 UX 연출 제안.</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--b);">
+        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
+          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">01</div>
+          <div style="font-size:14px;font-weight:700;color:var(--fw);">로그인 · 시작화면</div>
+          <div style="font-size:11px;color:var(--fs);line-height:1.8;">세계관 간접 소개 — “마법이 깨어난다”는 생성 논리</div>
+        </div>
+        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
+          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">02</div>
+          <div style="font-size:14px;font-weight:700;color:var(--fw);">탐험</div>
+          <div style="font-size:11px;color:var(--fs);line-height:1.8;">최소 HUD로 환경 몰입 · 조용한 탐험 · 진(陣) 흔적 발견 — 계속 걷고 싶은 감정 자극</div>
+        </div>
+        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
+          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">03</div>
+          <div style="font-size:14px;font-weight:700;color:var(--fw);">전투 진입</div>
+          <div style="font-size:11px;color:var(--fs);line-height:1.8;">탐험 → 액션 전환. 진 활성화 · 전투 HUD 생성 · 화면 긴장감 조성</div>
+        </div>
+        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
+          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">04</div>
+          <div style="font-size:14px;font-weight:700;color:var(--fw);">전투</div>
+          <div style="font-size:11px;color:var(--fs);line-height:1.8;">잉크 소비 · HUD 반응 · 진 활성화 등 시각 피드백 중심. 진 슬롯이 활성화되며 조용한 세계가 살아나는 대비감</div>
+        </div>
+        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
+          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">05</div>
+          <div style="font-size:14px;font-weight:700;color:var(--fw);">마도서</div>
+          <div style="font-size:11px;color:var(--fs);line-height:1.8;">기록 · 진 저장 · 잉크 상태 · 탐험 메모 · 페이지 인터랙션 — 마법사의 기록장</div>
+        </div>
+        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
+          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">06</div>
+          <div style="font-size:14px;font-weight:700;color:var(--fw);">종료</div>
+          <div style="font-size:11px;color:var(--fs);line-height:1.8;">마법진이 서서히 사라지며 화면이 만화처럼 전환. “오늘의 기록이 남겨졌습니다” — 마도서가 천천히 닫히며 종료</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 제안 개요 + 컬러 + 핵심 화면 (하단) -->
+    <div class="hr" style="margin-bottom:40px;"></div>
+    <div class="p2 fi" style="margin-bottom:8px;align-items:start;">
       <div style="position:sticky;top:68px;display:flex;flex-direction:column;gap:14px;">
         <div class="plabel">Overview</div>
         <div class="pdesc"><strong style="color:var(--fw);">일본 애니메이션을 게임 IP로 해석</strong>한 뒤 새로운 세계관으로 재구성하는 컨셉 제안.</div>
@@ -1046,68 +1270,6 @@ footer{
         <div><div class="img16"><img src="image/gogal_startani.gif" alt="스타트 애니메이션"><div class="img16-cap">스타트 애니메이션</div></div><div style="font-size:8px;color:var(--red);text-align:center;margin-top:6px;">02 · 스타트 애니메이션 (GIF)</div></div>
         <div><div class="img16"><img src="image/gogal-starmenu.jpg" alt="스타트 메뉴"><div class="img16-cap">스타트 메뉴</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">03 · 스타트 메뉴</div></div>
         <div><div class="img16"><img src="image/gogal_main.jpg" alt="메인"><div class="img16-cap">메인</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">04 · 메인</div></div>
-      </div>
-    </div>
-
-    <!-- 세계관 -->
-    <div class="hr" style="margin-bottom:32px;"></div>
-    <div class="fi" style="margin-bottom:24px;">
-      <div class="plabel" style="margin-bottom:12px;">Worldbuilding — 세계관</div>
-      <div class="pdesc" style="max-width:760px;">광대한 월드 자체가 게임의 주인공인 <strong style="color:var(--fw);">『원신』</strong>을 벤치마킹.</div>
-    </div>
-    <div class="p2 fi" style="margin-bottom:36px;">
-      <div style="display:flex;flex-direction:column;gap:14px;">
-        <div class="plabel">Story</div>
-        <div class="pdesc"><strong style="color:var(--fw);">마법사로 태어나야 마법을 쓸 수 있는 세계.</strong> 하지만 사실은 누구나 특정 재료만 있다면 마법을 쓸 수 있었다. 평범한 소녀가 마법을 쓰는 방법을 알게 되고, 세상을 뒤바꿀 수 있는 싸움의 한복판에 서게 된다.</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div class="ditem"><div class="ditem-title">은엽수</div><div class="ditem-desc">마법의 잉크를 만드는 재료</div></div>
-        <div class="ditem"><div class="ditem-title">챙모자 군단</div><div class="ditem-desc">금지 마법을 사용하는 적</div></div>
-        <div class="ditem"><div class="ditem-title">‘마법을 그린다’</div><div class="ditem-desc">기록된 마법 진(陣)을 발동한다</div></div>
-      </div>
-    </div>
-    <div class="p3 fi" style="margin-bottom:48px;">
-      <div class="ditem"><div class="ditem-title">KPI</div><div class="ditem-desc">세계관의 기억을 통해 유저를 지속적으로 돌아오게 만드는 것</div></div>
-      <div class="ditem"><div class="ditem-title">BM</div><div class="ditem-desc">월드 체류를 전제로 한 장기 라이브 서비스</div></div>
-      <div class="ditem"><div class="ditem-title">UX·UI 철학</div><div class="ditem-desc">세계관을 체감하도록 UI는 의도적으로 정리. 강조나 특정 감정을 유도하지 않고, 세계관에 거슬리지 않을 정도의 디자인. 필요할 때 UI를 제공.</div></div>
-    </div>
-
-    <!-- 주요 씬별 제안 -->
-    <div class="hr" style="margin-bottom:32px;"></div>
-    <div class="fi">
-      <div class="plabel" style="margin-bottom:6px;">Scene Proposals — 주요 씬별 제안</div>
-      <div class="pdesc" style="margin-bottom:24px;max-width:760px;">로그인부터 종료까지, 세계관을 체감시키는 씬별 UX 연출 제안.</div>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--b);">
-        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
-          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">01</div>
-          <div style="font-size:14px;font-weight:700;color:var(--fw);">로그인 · 시작화면</div>
-          <div style="font-size:11px;color:var(--fs);line-height:1.8;">세계관 간접 소개 — “마법이 깨어난다”는 생성 논리</div>
-        </div>
-        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
-          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">02</div>
-          <div style="font-size:14px;font-weight:700;color:var(--fw);">탐험</div>
-          <div style="font-size:11px;color:var(--fs);line-height:1.8;">최소 HUD로 환경 몰입 · 조용한 탐험 · 진(陣) 흔적 발견 — 계속 걷고 싶은 감정 자극</div>
-        </div>
-        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
-          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">03</div>
-          <div style="font-size:14px;font-weight:700;color:var(--fw);">전투 진입</div>
-          <div style="font-size:11px;color:var(--fs);line-height:1.8;">탐험 → 액션 전환. 진 활성화 · 전투 HUD 생성 · 화면 긴장감 조성</div>
-        </div>
-        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
-          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">04</div>
-          <div style="font-size:14px;font-weight:700;color:var(--fw);">전투</div>
-          <div style="font-size:11px;color:var(--fs);line-height:1.8;">잉크 소비 · HUD 반응 · 진 활성화 등 시각 피드백 중심. 진 슬롯이 활성화되며 조용한 세계가 살아나는 대비감</div>
-        </div>
-        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
-          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">05</div>
-          <div style="font-size:14px;font-weight:700;color:var(--fw);">마도서</div>
-          <div style="font-size:11px;color:var(--fs);line-height:1.8;">기록 · 진 저장 · 잉크 상태 · 탐험 메모 · 페이지 인터랙션 — 마법사의 기록장</div>
-        </div>
-        <div style="background:var(--bg);padding:24px 26px;display:flex;flex-direction:column;gap:9px;">
-          <div style="font-size:9px;color:var(--red);font-family:var(--mono);letter-spacing:0.1em;">06</div>
-          <div style="font-size:14px;font-weight:700;color:var(--fw);">종료</div>
-          <div style="font-size:11px;color:var(--fs);line-height:1.8;">마법진이 서서히 사라지며 화면이 만화처럼 전환. “오늘의 기록이 남겨졌습니다” — 마도서가 천천히 닫히며 종료</div>
-        </div>
       </div>
     </div>
   </div>
