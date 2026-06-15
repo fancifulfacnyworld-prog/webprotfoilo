@@ -1043,7 +1043,7 @@ footer{
       <div><div class="img16"><img src="image/ec_enhance_detail1.jpg" alt="강화 상세화면 1"><div class="img16-cap">강화 상세화면 1</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">강화 상세화면 1</div></div>
       <div><div class="img16"><img src="image/ec_enhance_detail2.jpg" alt="강화 상세화면 2"><div class="img16-cap">강화 상세화면 2</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">강화 상세화면 2</div></div>
       <div><div class="img16"><img src="image/ec_terminal.jpg" alt="통신"><div class="img16-cap">통신</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">통신</div></div>
-      <div><div class="img16"><img src="image/ec_battle.gif" alt="전투 유니티 연출"><div class="img16-cap">전투 — Unity 연출</div></div><div style="font-size:8px;color:var(--red);text-align:center;margin-top:6px;">전투 · Unity 연출 영상</div></div>
+      <div><div class="img16"><video src="image/ec_battle.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;object-fit:contain;position:absolute;top:0;left:0;background:#000;"></video></div><div style="font-size:8px;color:var(--red);text-align:center;margin-top:6px;">전투 · Unity 연출 영상 ▶</div></div>
     </div>
   </div>
   <!-- 전체 UX 플로우 -->
@@ -1217,59 +1217,13 @@ footer{
         <div class="ditem"><div class="ditem-title">제안 범위</div><div class="ditem-desc">IP 해석 · 세계관 적용 포인트 · UX·UI 철학</div></div>
         <div class="ditem"><div class="ditem-title">도입부 연출</div><div class="ditem-desc">애니메이션 오프닝과 게임에 적용된 세계관을 설명할 수 있게 제작</div></div>
         <div class="ditem"><div class="ditem-title">현재 상황</div><div class="ditem-desc">컨셉 제안 및 핵심 화면 설계 중</div></div>
-        <div style="margin-top:10px;">
-          <div class="plabel" style="margin-bottom:13px;">Color System</div>
-          <div style="display:flex;flex-direction:column;gap:11px;">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <div style="font-size:9px;font-family:var(--mono);color:var(--fs);letter-spacing:0.05em;width:54px;flex-shrink:0;">주조색</div>
-              <div style="display:flex;gap:5px;">
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#F5EDD8;" title="#F5EDD8 · 양피지 베이스"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#EDE0C4;" title="#EDE0C4 · 낡은 양피지"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#E2D0AA;" title="#E2D0AA · 양피지 그림자"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#1C1A14;" title="#1C1A14 · 밤 잉크"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#2D2820;" title="#2D2820 · 어두운 양피지"></span>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:12px;">
-              <div style="font-size:9px;font-family:var(--mono);color:var(--fs);letter-spacing:0.05em;width:54px;flex-shrink:0;">전경색</div>
-              <div style="display:flex;gap:5px;">
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#2B1F0E;" title="#2B1F0E · 먹색 잉크"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#5C4A2A;" title="#5C4A2A · 갈색 잉크"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#8C7250;" title="#8C7250 · 흐린 잉크"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#F0E6CC;" title="#F0E6CC · 밝은 양피지"></span>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:12px;">
-              <div style="font-size:9px;font-family:var(--mono);color:var(--fs);letter-spacing:0.05em;width:54px;flex-shrink:0;">포인트색</div>
-              <div style="display:flex;gap:5px;">
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#C8943A;" title="#C8943A · 마법의 금빛"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#E8B860;" title="#E8B860 · 밝은 금빛"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#8FA8C8;" title="#8FA8C8 · 마법 하늘빛"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#B8A0D8;" title="#B8A0D8 · 마법 보랏빛"></span>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:12px;">
-              <div style="font-size:9px;font-family:var(--mono);color:var(--fs);letter-spacing:0.05em;width:54px;flex-shrink:0;">긍정</div>
-              <div style="display:flex;gap:5px;">
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#4A7A4A;" title="#4A7A4A · 회복 · 안전"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#5AC87A;" title="#5AC87A · 전투 회복"></span>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:12px;">
-              <div style="font-size:9px;font-family:var(--mono);color:var(--fs);letter-spacing:0.05em;width:54px;flex-shrink:0;">부정</div>
-              <div style="display:flex;gap:5px;">
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#8B3A2A;" title="#8B3A2A · 위험 · 공격"></span>
-                <span style="width:18px;height:18px;border:1px solid var(--b);background:#C84040;" title="#C84040 · 전투 위험"></span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- 컬러 시스템(고깔): 미확정 → 숨김. 확정되면 이 자리에 복원 -->
       </div>
       <div style="display:flex;flex-direction:column;gap:14px;">
-        <div><div class="img16"><img src="image/gogal_title.jpg" alt="타이틀"><div class="img16-cap">타이틀</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">01 · 타이틀</div></div>
+        <div><div class="img16 ec-home-swap"><img src="image/gogal_title.jpg" alt="타이틀"><img src="image/gogal_title_hover.png" alt="타이틀 호버" class="ec-home-hover" onerror="this.style.display='none'"><div class="img16-cap">타이틀 · 호버 시 변경</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">01 · 타이틀 <span style="opacity:0.55;">(호버)</span></div></div>
         <div><div class="img16"><img src="image/gogal_startani.gif" alt="스타트 애니메이션"><div class="img16-cap">스타트 애니메이션</div></div><div style="font-size:8px;color:var(--red);text-align:center;margin-top:6px;">02 · 스타트 애니메이션 (GIF)</div></div>
-        <div><div class="img16"><img src="image/gogal-starmenu.jpg" alt="스타트 메뉴"><div class="img16-cap">스타트 메뉴</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">03 · 스타트 메뉴</div></div>
-        <div><div class="img16"><img src="image/gogal_main.jpg" alt="메인"><div class="img16-cap">메인</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">04 · 메인</div></div>
+        <div><div class="img16 ec-home-swap"><img src="image/gogal-starmenu1.png" alt="메인 메뉴"><img src="image/gogal-starmenu2.jpg" alt="메인 메뉴 호버" class="ec-home-hover" onerror="this.style.display='none'"><div class="img16-cap">메인 메뉴 · 호버 시 변경</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">03 · 메인 메뉴 <span style="opacity:0.55;">(호버)</span></div></div>
+        <div><div class="img16 ec-home-swap"><img src="image/gogal_main.png" alt="탐험"><img src="image/gogal_mainhover.png" alt="탐험 호버" class="ec-home-hover" onerror="this.style.display='none'"><div class="img16-cap">탐험 · 호버 시 변경</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;">04 · 탐험 <span style="opacity:0.55;">(호버)</span></div></div>
       </div>
     </div>
   </div>
