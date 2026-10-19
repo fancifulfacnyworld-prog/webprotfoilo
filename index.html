@@ -1203,10 +1203,23 @@ footer{
       <div>
         <!-- 배틀로얄 -->
         <div class="tabpanel on">
-          <div class="pdesc" style="margin-bottom:18px;max-width:680px;" data-en="A <strong style='color:var(--fw);'>survival battle royale</strong> where many players compete.">다수가 겨루는 <strong style="color:var(--fw);">생존형 배틀로얄</strong>.</div>
+          <div class="plabel" style="margin-bottom:12px;" data-en="Battle Royale — Visualizing Multiplayer Combat Information">Battle Royale — 다중 플레이어 전투 정보의 시각화</div>
+          <div class="pdesc" style="margin-bottom:12px;max-width:760px;" data-en="In a battle royale where many players exchange attacks in real time, I designed the HUD information structure so the complex, constantly shifting combat situation stays intuitive to read.">다수의 플레이어가 실시간으로 공격을 주고받는 배틀로얄 환경에서, 복잡하게 변화하는 전투 상황을 직관적으로 파악할 수 있도록 HUD 정보 구조를 설계했습니다.</div>
+          <div class="pdesc" style="margin-bottom:22px;max-width:760px;" data-en="Referencing how Tetris battle royale presents information, I separated player status from real-time attack information.">테트리스 배틀로얄의 정보 표현 방식을 참고하여, 플레이어 상태와 실시간 공격 정보를 분리해 전달했습니다.</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:760px;">
             <div class="img16" style="aspect-ratio:600/316"><img src="image/p09_dance_battleroyale1.png" alt="배틀로얄 1"><div class="img16-cap" data-en="Battle Royale">배틀로얄</div></div>
             <div class="img16" style="aspect-ratio:1013/570"><img src="image/p09_dance_battleroyale2.png" alt="배틀로얄 2"><div class="img16-cap" data-en="Battle Royale">배틀로얄</div></div>
+          </div>
+          <!-- 01/02 설명 (이미지 아래) -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;max-width:760px;margin-top:26px;">
+            <div>
+              <div style="display:flex;gap:11px;align-items:baseline;margin-bottom:8px;"><span style="font-family:var(--disp);font-size:20px;color:var(--red);line-height:1;flex-shrink:0;">01</span><div style="font-size:12px;font-weight:700;color:var(--fw);letter-spacing:0.01em;" data-en="Player Status">Player Status · 참가자 상태 시각화</div></div>
+              <div class="pdesc" style="font-size:11px;line-height:1.75;" data-en="Each player is simplified into a single hexagon arranged on a honeycomb grid, so the state of every participant can be grasped at a glance. Each cell changes color by HP, visually conveying whether a player is alive or eliminated.">각 플레이어를 하나의 육각형으로 단순화하고, 벌집 형태의 그리드에 배치하여 전체 참가자의 상태를 한눈에 파악할 수 있도록 설계했습니다. 각 셀은 HP에 따라 색상이 변화하며, 이를 통해 플레이어의 생존 및 탈락 상황을 시각적으로 전달했습니다.</div>
+            </div>
+            <div>
+              <div style="display:flex;gap:11px;align-items:baseline;margin-bottom:8px;"><span style="font-family:var(--disp);font-size:20px;color:var(--red);line-height:1;flex-shrink:0;">02</span><div style="font-size:12px;font-weight:700;color:var(--fw);letter-spacing:0.01em;" data-en="Real-time Attack Feedback">Real-time Attack Feedback · 실시간 공격 정보</div></div>
+              <div class="pdesc" style="font-size:11px;line-height:1.75;" data-en="As attacks occur between players in real time, I designed notifications that appear and fade on the left of the screen to show the attacker and the attack information — conveying the constantly shifting attack situation while minimizing visual interference with the core play area.">플레이어 간 공격이 실시간으로 발생하는 상황에서 공격 주체와 공격 정보를 확인할 수 있도록 화면 좌측에 등장했다 사라지는 알림을 설계했습니다. 이를 통해 지속적으로 변화하는 공격 상황을 전달하면서도 핵심 플레이 영역의 시각적 간섭을 최소화하고자 했습니다.</div>
+            </div>
           </div>
         </div>
         <!-- 1:1 아레나 -->
