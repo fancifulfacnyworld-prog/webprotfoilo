@@ -939,7 +939,7 @@ footer{
   <!-- 진입 · 정보 구조 화면 -->
   <div class="fi" style="margin-top:4px;margin-bottom:48px;">
     <div class="plabel" style="margin-bottom:16px;" data-en="Entry &amp; Information Structure">진입 · 정보 구조</div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:540px;">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
       <div><div class="img16"><img src="image/ec_campaign.jpg" alt="플레이 진입 구조"><div class="img16-cap" data-en="Play Entry Structure">플레이 진입 구조</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Play Entry Structure">플레이 진입 구조</div></div>
       <div><div class="img16"><img src="image/ec_campaign_popup.jpg" alt="정보 우선순위 설계"><div class="img16-cap" data-en="Information Priority Design">정보 우선순위 설계</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Information Priority Design">정보 우선순위 설계</div></div>
     </div>
@@ -975,6 +975,25 @@ footer{
     <div>
       <div style="display:flex;gap:11px;align-items:baseline;margin-bottom:8px;"><span style="font-family:var(--disp);font-size:20px;color:var(--red);line-height:1;flex-shrink:0;">04</span><div style="font-size:12px;font-weight:700;color:var(--fw);letter-spacing:0.01em;" data-en="Combat Resources">Combat Resources · 전투 자원 정보 구분</div></div>
       <div class="pdesc" style="font-size:11px;line-height:1.75;" data-en="Each character's HP is separated from the X-Mode activation gauge, distinguishing survival state from a special combat resource. X-Mode is an overdrive battle mode tied to the world's emotion-control system.">캐릭터별 HP와 X 모드 활성화 게이지를 분리하여 생존 상태와 특수 전투 자원을 구분했습니다. X 모드는 세계관의 감정 제어 시스템과 연결된 폭주 전투 모드입니다.</div>
+    </div>
+  </div>
+
+  <!-- 구현 영상 (전투 인터랙션) -->
+  <div class="fi" style="margin-top:46px;max-width:840px;">
+    <div class="plabel" style="margin-bottom:12px;" data-en="Implementation Video · Combat Interaction">구현 영상 · 전투 인터랙션</div>
+    <div class="pdesc" style="margin-bottom:20px;" data-en="A Unity prototype shows how the four states above behave in actual combat — motion-based elements such as the attack feedback (02) are best seen here in the footage.">위 4가지 상태가 실제 전투에서 어떻게 동작하는지 Unity 프로토타입으로 구현·검증했습니다. 공격 피드백(02)처럼 움직임 기반 요소는 영상에서 확인할 수 있습니다.</div>
+    <div style="max-width:600px;">
+      <div><div class="img16"><video src="image/ec_battle.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;object-fit:contain;position:absolute;top:0;left:0;background:#000;"></video></div><div style="font-size:8px;color:var(--red);text-align:center;margin-top:6px;" data-en="Unity Prototype — Screen Transitions &amp; Interaction ▶">Unity Prototype — 화면 전환 및 인터랙션 구현 ▶</div></div>
+    </div>
+  </div>
+
+  <!-- Battle Result (전투 종료 및 결과) -->
+  <div class="fi" style="margin-top:46px;">
+    <div class="plabel" style="margin-bottom:12px;" data-en="Battle Result — Combat End &amp; Result Feedback">Battle Result — 전투 종료 및 결과 피드백</div>
+    <div class="pdesc" style="max-width:840px;margin-bottom:22px;" data-en="At the end of combat, a SUCCESS sequence signals the shift in battle state, after which the result screen lets players review their characters and growth information.<br><br>The flow from the end of battle through to the result helps players recognize their own combat performance.">전투 종료 시 SUCCESS 연출로 전투 상태의 전환을 알리고, 이후 결과 화면에서 캐릭터와 성장 정보를 확인하도록 구성했습니다.<br><br>전투 종료부터 결과 확인까지 이어지는 흐름을 통해 플레이어가 자신의 전투 성과를 인지할 수 있도록 설계했습니다.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div><div class="img16"><img src="image/ec_battleResult1.jpg" alt="전투 종료 피드백"><div class="img16-cap" data-en="Combat End · SUCCESS">전투 종료 · SUCCESS</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Combat End Feedback (SUCCESS)">전투 종료 피드백 (SUCCESS)</div></div>
+      <div><div class="img16"><img src="image/ec_battleResult2.jpg" alt="결과 화면"><div class="img16-cap" data-en="Result Screen">결과 화면</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Result Screen">결과 화면</div></div>
     </div>
   </div>
 
@@ -1035,26 +1054,6 @@ footer{
       <div><div class="img16"><img src="image/ec_enhance_detail2.jpg" alt="성장 루프 상세 2"><div class="img16-cap" data-en="Growth Loop · Detail 2">성장 루프 · 상세 2</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Growth Loop · Detail 2">성장 루프 · 상세 2</div></div>
       <div><div class="img16"><img src="image/ec_terminal.jpg" alt="세계관 전달 인터페이스"><div class="img16-cap" data-en="Worldview Delivery Interface">세계관 전달 인터페이스</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Worldview Delivery Interface">세계관 전달 인터페이스</div></div>
     </div>
-  </div>
-
-  <!-- Battle Result -->
-  <div class="fi">
-    <div class="plabel" style="margin-bottom:12px;" data-en="Battle Result — Combat End &amp; Result Feedback">Battle Result — 전투 종료 및 결과 피드백</div>
-    <div class="pdesc" style="max-width:840px;margin-bottom:22px;" data-en="At the end of combat, a SUCCESS sequence signals the shift in battle state, after which the result screen lets players review their characters and growth information.<br><br>The flow from the end of battle through to the result helps players recognize their own combat performance.">전투 종료 시 SUCCESS 연출로 전투 상태의 전환을 알리고, 이후 결과 화면에서 캐릭터와 성장 정보를 확인하도록 구성했습니다.<br><br>전투 종료부터 결과 확인까지 이어지는 흐름을 통해 플레이어가 자신의 전투 성과를 인지할 수 있도록 설계했습니다.</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:900px;">
-      <div><div class="img16"><img src="image/ec_battleResult1.jpg" alt="전투 종료 피드백"><div class="img16-cap" data-en="Combat End · SUCCESS">전투 종료 · SUCCESS</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Combat End Feedback (SUCCESS)">전투 종료 피드백 (SUCCESS)</div></div>
-      <div><div class="img16"><img src="image/ec_battleResult2.jpg" alt="결과 화면"><div class="img16-cap" data-en="Result Screen">결과 화면</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Result Screen">결과 화면</div></div>
-    </div>
-  </div>
-
-  <div class="hr" style="margin:60px 0 32px;"></div>
-  <div class="fi"><div class="eyebrow" data-en="Prototype &amp; Validation — Implementation &amp; Validation">Prototype &amp; Validation — 구현 및 검증</div></div>
-
-  <div class="fi" style="max-width:840px;margin-bottom:26px;">
-    <div class="pdesc" data-en="Carried the design through to a playable, verifiable form with Figma screens, ProtoPie interactions, and a Unity prototype.">Figma 화면, ProtoPie 인터랙션, Unity 프로토타입으로 설계를 실제 플레이 가능한 형태까지 구현·검증했습니다.</div>
-  </div>
-  <div class="fi" style="max-width:600px;">
-          <div><div class="img16"><video src="image/ec_battle.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;object-fit:contain;position:absolute;top:0;left:0;background:#000;"></video></div><div style="font-size:8px;color:var(--red);text-align:center;margin-top:6px;" data-en="Unity Prototype — Screen Transitions &amp; Interaction ▶">Unity Prototype — 화면 전환 및 인터랙션 구현 ▶</div></div>
   </div>
 
   <!-- ═══ World & Lore (접이식) ═══ -->
