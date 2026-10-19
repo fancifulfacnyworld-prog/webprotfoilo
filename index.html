@@ -946,35 +946,37 @@ footer{
   </div>
 
   <div class="hr" style="margin:60px 0 32px;"></div>
-  <div class="fi"><div class="eyebrow" data-en="Combat Experience Design">Combat Experience Design — 전투 경험 설계</div></div>
+  <div class="fi"><div class="eyebrow" data-en="Combat HUD">Combat HUD</div></div>
 
-  <div class="fi" style="max-width:840px;margin-bottom:26px;">
-    <div class="plabel" style="margin-bottom:12px;" data-en="Combat Flow &amp; UI Feedback Design">전투 흐름과 UI 피드백 설계</div>
-    <div class="pdesc" data-en="To connect the player's actions with changes in game state during combat, I designed the information flow from movement, attack, and skills through the overdrive gauge to the end of battle.">전투 중 플레이어의 행동과 게임 상태 변화를 연결하기 위해 이동·공격·스킬, 폭주 게이지, 전투 종료까지의 정보 전달 흐름을 설계했습니다.</div>
-  </div>
-  <div class="fi" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;">
-    <div class="ditem"><div class="ditem-title" data-en="01 · Combat Actions">01 · 전투 행동</div><div class="ditem-desc" data-en="Movement · Fire · Skill UI">이동·사격·스킬 UI</div></div>
-    <div class="ditem"><div class="ditem-title" data-en="02 · State Changes">02 · 상태 변화</div><div class="ditem-desc" data-en="Overdrive charge · trigger · upkeep">폭주 충전·발동·유지</div></div>
-    <div class="ditem"><div class="ditem-title" data-en="03 · Combat Flow">03 · 전투 흐름</div><div class="ditem-desc" data-en="Boss battle · clear conditions">보스전·클리어 조건</div></div>
+  <div class="fi" style="max-width:840px;margin-bottom:28px;">
+    <div class="plabel" style="margin-bottom:12px;" data-en="Combat State Awareness Design">다중 캐릭터 전투의 상태 인지 설계</div>
+    <div class="pdesc" data-en="In battles with multiple characters, I designed the information structure and per-state visual feedback so players can quickly grasp who they are controlling, who is attacking, and who can be swapped in.">다수의 캐릭터가 참여하는 전투에서 플레이어가 현재 조작 대상, 공격 주체, 교체 가능 여부를 빠르게 파악할 수 있도록 정보 구조와 상태별 시각적 피드백을 설계했습니다.</div>
   </div>
 
-  <!-- 전투 HUD 설계 사례 -->
-  <div class="fi" style="margin-top:44px;">
-    <div class="plabel" style="margin-bottom:18px;" data-en="Combat HUD Design Case">전투 HUD 설계 사례</div>
-    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:start;">
-      <div style="aspect-ratio:16/9;background:var(--bg3);border:1px dashed var(--b3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
-        <div style="font-size:12px;font-weight:600;color:var(--fs);letter-spacing:0.03em;">ECLIPSERA 전투 HUD</div>
-        <div style="font-size:8px;color:var(--fh);font-family:var(--mono);letter-spacing:0.06em;" data-en="Area for the actual HUD work screen">실제 작업 화면을 배치할 영역</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:20px;">
-        <div style="display:flex;gap:12px;align-items:flex-start;"><span style="font-family:var(--disp);font-size:22px;color:var(--red);line-height:1;flex-shrink:0;">01</span><div class="pdesc" style="font-size:11px;" data-en="Information the player needs to check first during combat">전투 중 우선 확인해야 하는 정보</div></div>
-        <div style="display:flex;gap:12px;align-items:flex-start;"><span style="font-family:var(--disp);font-size:22px;color:var(--red);line-height:1;flex-shrink:0;">02</span><div class="pdesc" style="font-size:11px;" data-en="State changes and feedback such as skills and gauges">스킬·게이지 등 상태 변화와 피드백</div></div>
-        <div style="display:flex;gap:12px;align-items:flex-start;"><span style="font-family:var(--disp);font-size:22px;color:var(--red);line-height:1;flex-shrink:0;">03</span><div class="pdesc" style="font-size:11px;" data-en="Visual distinction between danger states and key actions">위험 상황과 주요 행동의 시각적 구분</div></div>
-      </div>
+  <!-- 전투 HUD 대표 이미지 -->
+  <div class="fi" style="max-width:900px;margin-bottom:34px;">
+    <div class="img16"><img src="image/ec_battle_hud.jpg" alt="ECLIPSERA 전투 HUD"><div class="img16-cap" data-en="Eclipsera Combat HUD">ECLIPSERA 전투 HUD</div></div>
+  </div>
+
+  <!-- 4가지 상태 설계 -->
+  <div class="fi" style="display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;max-width:900px;">
+    <div>
+      <div style="display:flex;gap:11px;align-items:baseline;margin-bottom:8px;"><span style="font-family:var(--disp);font-size:20px;color:var(--red);line-height:1;flex-shrink:0;">01</span><div style="font-size:12px;font-weight:700;color:var(--fw);letter-spacing:0.01em;" data-en="Active Character">Active Character · 활성 캐릭터 식별</div></div>
+      <div class="pdesc" style="font-size:11px;line-height:1.75;" data-en="The portrait and HP of the character currently being controlled are emphasized in a separate area, clearly distinguishing the active character from the rest of the party.">현재 조작 중인 캐릭터의 초상과 HP를 별도 영역에 강조하여 활성 캐릭터와 나머지 파티원을 명확하게 구분했습니다.</div>
+    </div>
+    <div>
+      <div style="display:flex;gap:11px;align-items:baseline;margin-bottom:8px;"><span style="font-family:var(--disp);font-size:20px;color:var(--red);line-height:1;flex-shrink:0;">02</span><div style="font-size:12px;font-weight:700;color:var(--fw);letter-spacing:0.01em;" data-en="Attack Feedback">Attack Feedback · 공격 주체 인지</div></div>
+      <div class="pdesc" style="font-size:11px;line-height:1.75;" data-en="The attacking character's thumbnail pops out with a motion effect, so the source of an attack stays intuitive to read even in battles with many characters.">공격 중인 캐릭터의 썸네일이 돌출되며 움직이는 모션을 적용하여, 다수의 캐릭터가 참여하는 전투에서도 공격 주체를 직관적으로 인지할 수 있도록 했습니다.</div>
+    </div>
+    <div>
+      <div style="display:flex;gap:11px;align-items:baseline;margin-bottom:8px;"><span style="font-family:var(--disp);font-size:20px;color:var(--red);line-height:1;flex-shrink:0;">03</span><div style="font-size:12px;font-weight:700;color:var(--fw);letter-spacing:0.01em;" data-en="Switch Availability">Switch Availability · 캐릭터 교체 가능 여부</div></div>
+      <div class="pdesc" style="font-size:11px;line-height:1.75;" data-en="Swappable characters carry a dedicated switch icon, letting players quickly judge which targets are currently selectable.">교체 가능한 캐릭터에 별도의 교체 아이콘을 표시하여, 플레이어가 현재 선택할 수 있는 대상을 빠르게 판단하도록 설계했습니다.</div>
+    </div>
+    <div>
+      <div style="display:flex;gap:11px;align-items:baseline;margin-bottom:8px;"><span style="font-family:var(--disp);font-size:20px;color:var(--red);line-height:1;flex-shrink:0;">04</span><div style="font-size:12px;font-weight:700;color:var(--fw);letter-spacing:0.01em;" data-en="Combat Resources">Combat Resources · 전투 자원 정보 구분</div></div>
+      <div class="pdesc" style="font-size:11px;line-height:1.75;" data-en="Each character's HP is separated from the X-Mode activation gauge, distinguishing survival state from a special combat resource. X-Mode is an overdrive battle mode tied to the world's emotion-control system.">캐릭터별 HP와 X 모드 활성화 게이지를 분리하여 생존 상태와 특수 전투 자원을 구분했습니다. X 모드는 세계관의 감정 제어 시스템과 연결된 폭주 전투 모드입니다.</div>
     </div>
   </div>
-
-  <div class="fi" style="max-width:840px;margin-top:20px;"><div style="font-size:9px;color:var(--fh);line-height:1.7;" data-en="* A design-intent summary based on the systems defined in the Battle Loop. Actual combat footage with the in-game UI is shown in the Prototype &amp; Validation section below.">※ Battle Loop에 정의된 시스템을 토대로 한 설계 의도 요약입니다. 실제 UI가 포함된 전투 영상은 아래 Prototype &amp; Validation 섹션에서 확인할 수 있습니다.</div></div>
 
   <div class="hr" style="margin:60px 0 32px;"></div>
   <div class="fi"><div class="eyebrow" data-en="UI Design &amp; Interaction — Screens &amp; Interaction">UI Design &amp; Interaction — 화면 및 인터랙션</div></div>
@@ -1032,6 +1034,16 @@ footer{
       <div><div class="img16"><img src="image/ec_enhance_detail1.jpg" alt="성장 루프 상세 1"><div class="img16-cap" data-en="Growth Loop · Detail 1">성장 루프 · 상세 1</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Growth Loop · Detail 1">성장 루프 · 상세 1</div></div>
       <div><div class="img16"><img src="image/ec_enhance_detail2.jpg" alt="성장 루프 상세 2"><div class="img16-cap" data-en="Growth Loop · Detail 2">성장 루프 · 상세 2</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Growth Loop · Detail 2">성장 루프 · 상세 2</div></div>
       <div><div class="img16"><img src="image/ec_terminal.jpg" alt="세계관 전달 인터페이스"><div class="img16-cap" data-en="Worldview Delivery Interface">세계관 전달 인터페이스</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Worldview Delivery Interface">세계관 전달 인터페이스</div></div>
+    </div>
+  </div>
+
+  <!-- Battle Result -->
+  <div class="fi">
+    <div class="plabel" style="margin-bottom:12px;" data-en="Battle Result — Combat End &amp; Result Feedback">Battle Result — 전투 종료 및 결과 피드백</div>
+    <div class="pdesc" style="max-width:840px;margin-bottom:22px;" data-en="At the end of combat, a SUCCESS sequence signals the shift in battle state, after which the result screen lets players review their characters and growth information.<br><br>The flow from the end of battle through to the result helps players recognize their own combat performance.">전투 종료 시 SUCCESS 연출로 전투 상태의 전환을 알리고, 이후 결과 화면에서 캐릭터와 성장 정보를 확인하도록 구성했습니다.<br><br>전투 종료부터 결과 확인까지 이어지는 흐름을 통해 플레이어가 자신의 전투 성과를 인지할 수 있도록 설계했습니다.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:900px;">
+      <div><div class="img16"><img src="image/ec_battleResult1.jpg" alt="전투 종료 피드백"><div class="img16-cap" data-en="Combat End · SUCCESS">전투 종료 · SUCCESS</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Combat End Feedback (SUCCESS)">전투 종료 피드백 (SUCCESS)</div></div>
+      <div><div class="img16"><img src="image/ec_battleResult2.jpg" alt="결과 화면"><div class="img16-cap" data-en="Result Screen">결과 화면</div></div><div style="font-size:8px;color:var(--fh);text-align:center;margin-top:6px;" data-en="Result Screen">결과 화면</div></div>
     </div>
   </div>
 
